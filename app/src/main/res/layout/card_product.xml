@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="160dp"
     android:layout_height="220dp"
+    android:layout_margin="5dp"
     app:cardCornerRadius="30dp"
     tools:backgroundTint="#fef">
 
@@ -28,12 +29,12 @@
             android:layout_marginHorizontal="10dp"
             android:textAppearance="?textAppearanceHeadline5"
             android:textStyle="bold"
+            app:drawableEndCompat="@drawable/ic_currency_ruble_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/photo"
-            tools:text="20001"
-            app:drawableEndCompat="@drawable/ic_currency_ruble_24" />
+            tools:text="20001" />
 
         <TextView
             android:id="@+id/name"
@@ -49,6 +50,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/price"
             tools:text="Продам гараж очень красивый с надписью продам" />
+
+        <ImageView
+            android:id="@+id/like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_favorite_empty_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
