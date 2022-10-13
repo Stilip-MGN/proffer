@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Горизонтальный отступ от края экрана (отступы слева и справа) -->
+    <attr name="screenMarginHorizontal" format="dimension|reference"/>
+
+</resources>
