@@ -21,9 +21,15 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         with(binding){
             recRecommendations.adapter = adAdapter
+            textRecommendations.setOnClickListener {
+                viewModel.getRecommended()
+            }
         }
 
-        adAdapter.submitList(viewModel.ads)
+       viewModel.ads
+            .subscribe { list ->
+            adAdapter.submitList(list)
+        }
 
     }
 }
