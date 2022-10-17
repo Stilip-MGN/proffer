@@ -14,7 +14,8 @@ class SearchViewModel @Inject constructor(
     private val getRecommendedAds: GetRecommendedAdsUseCase
 ) : ViewModel() {
 
-    val ads = PublishSubject.create<List<Ad>>()!!
+    val ads = PublishSubject.create<List<Ad>>().apply { getRecommended() }
+
 
     fun getRecommended() {
 
@@ -24,8 +25,6 @@ class SearchViewModel @Inject constructor(
             .subscribe { bb ->
                 ads.onNext(bb)
             }
-
-
 
     }
 }

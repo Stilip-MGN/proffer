@@ -10,7 +10,7 @@ import studio.stilip.proffer.databinding.FragmentSearchBinding
 
 @AndroidEntryPoint
 class SearchFragment : Fragment(R.layout.fragment_search) {
-    
+
     private val viewModel: SearchViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -19,15 +19,11 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         val adAdapter = AdListAdapter()
 
-        with(binding){
+        with(binding) {
             recRecommendations.adapter = adAdapter
-            textRecommendations.setOnClickListener {
-                viewModel.getRecommended()
-            }
         }
 
-       viewModel.ads
-            .subscribe { list ->
+        viewModel.ads.subscribe { list ->
             adAdapter.submitList(list)
         }
 
