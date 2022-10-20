@@ -1,13 +1,27 @@
 package studio.stilip.proffer.app.fragments.favorites
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.rxjava3.subjects.BehaviorSubject
+import studio.stilip.proffer.domain.entities.Ad
+import studio.stilip.proffer.domain.usecase.search.GetFavoritesAdsUseCase
+import javax.inject.Inject
 
-class FavoritesViewModel : ViewModel() {
+@HiltViewModel
+class FavoritesViewModel @Inject constructor(
+    private val getFavoritesAds: GetFavoritesAdsUseCase
+) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+    val ads = BehaviorSubject.create<List<Ad>>().apply { getFavorites() }
+
+    private fun getFavorites() {
+        getFavoritesAds()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { bb ->
+                ads.onNext(bb)
+            }
     }
-    val text: LiveData<String> = _text
 }
