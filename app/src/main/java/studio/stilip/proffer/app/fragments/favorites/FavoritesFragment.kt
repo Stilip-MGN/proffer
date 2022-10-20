@@ -18,13 +18,20 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
         val binding = FragmentFavoritesBinding.bind(view)
 
         val adAdapter = AdsFavoriteAdapter()
+        val sellersAdapter = SellersAdapter()
 
         with(binding) {
             recFav.adapter = adAdapter
+            recSubs.adapter = sellersAdapter
         }
 
-        viewModel.ads.subscribe { list ->
-            adAdapter.submitList(list)
+        with(viewModel) {
+            ads.subscribe { list ->
+                adAdapter.submitList(list)
+            }
+            sellers.subscribe { list ->
+                sellersAdapter.submitList(list)
+            }
         }
     }
 }

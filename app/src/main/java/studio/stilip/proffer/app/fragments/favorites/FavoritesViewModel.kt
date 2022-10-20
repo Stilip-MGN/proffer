@@ -6,22 +6,35 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 import studio.stilip.proffer.domain.entities.Ad
+import studio.stilip.proffer.domain.entities.Seller
 import studio.stilip.proffer.domain.usecase.search.GetFavoritesAdsUseCase
+import studio.stilip.proffer.domain.usecase.search.GetSubscribedSellersUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class FavoritesViewModel @Inject constructor(
-    private val getFavoritesAds: GetFavoritesAdsUseCase
+    private val getFavoritesAds: GetFavoritesAdsUseCase,
+    private val getSubscribedSellers: GetSubscribedSellersUseCase
 ) : ViewModel() {
 
     val ads = BehaviorSubject.create<List<Ad>>().apply { getFavorites() }
+    val sellers = BehaviorSubject.create<List<Seller>>().apply { getSubscribed() }
 
     private fun getFavorites() {
         getFavoritesAds()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { bb ->
-                ads.onNext(bb)
+            .subscribe { ad ->
+                ads.onNext(ad)
+            }
+    }
+
+    private fun getSubscribed() {
+        getSubscribedSellers()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { seller ->
+                sellers.onNext(seller)
             }
     }
 }
