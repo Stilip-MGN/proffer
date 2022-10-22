@@ -19,6 +19,7 @@ class FavoritesViewModel @Inject constructor(
 
     val ads = BehaviorSubject.create<List<Ad>>().apply { getFavorites() }
     val sellers = BehaviorSubject.create<List<Seller>>().apply { getSubscribed() }
+    val isFav = BehaviorSubject.create<Boolean>().also { it.onNext(true) }
 
     private fun getFavorites() {
         getFavoritesAds()

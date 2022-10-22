@@ -30,7 +30,6 @@
         android:gravity="center"
         android:text="@string/btn_ads"
         android:textAppearance="?textAppearanceHeadline6"
-        android:textStyle=""
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toStartOf="@id/btn_sub"
         app:layout_constraintStart_toStartOf="parent"

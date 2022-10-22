@@ -21,8 +21,40 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
         val sellersAdapter = SellersAdapter()
 
         with(binding) {
+            var isFav = true
             recFav.adapter = adAdapter
             recSubs.adapter = sellersAdapter
+
+            fun changeRecycle() {
+                if (isFav) {
+                    recFav.visibility = View.VISIBLE
+                    recSubs.visibility = View.GONE
+                    btnSub.hint = getString(R.string.btn_subs)
+                    btnSub.text = ""
+                    btnAds.text = getString(R.string.btn_ads)
+                    btnAds.hint = ""
+                } else {
+                    recSubs.visibility = View.VISIBLE
+                    recFav.visibility = View.GONE
+                    btnAds.hint = getString(R.string.btn_ads)
+                    btnAds.text = ""
+                    btnSub.text = getString(R.string.btn_subs)
+                    btnSub.hint = ""
+                }
+            }
+
+            viewModel.isFav.subscribe {
+                isFav = it
+                changeRecycle()
+            }
+
+            btnAds.setOnClickListener {
+                if (!isFav) viewModel.isFav.onNext(true)
+            }
+
+            btnSub.setOnClickListener {
+                if (isFav) viewModel.isFav.onNext(false)
+            }
         }
 
         with(viewModel) {
