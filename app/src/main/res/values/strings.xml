@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Proffer</string>
     <string name="title_search">Поиск</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_favorites">Избранное</string>
     <string name="title_notifications">Notifications</string>
     <string name="recommendations">Рекомендации</string>
+    <string name="reviews">отзывов</string>
+    <string name="btn_ads">Объявления</string>
+    <string name="btn_subs">Подписки</string>
 </resources>
