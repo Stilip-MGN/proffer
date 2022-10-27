@@ -9,12 +9,15 @@
     <string name="btn_subs">Подписки</string>
     <string name="orders">Заказы</string>
     <string name="to_orders">Перейти к заказам</string>
-    <string name="no_active">Нет активных</string>
+    <string name="active">активных</string>
+    <string name="active_1">активное</string>
     <string name="to_ads">Перейти к объявлениям</string>
     <string name="to_control">Перейти в управление</string>
     <string name="control_profile">Управление профилем</string>
     <string name="available_checks_extensions">Доступные проверки и расширения</string>
-    <string name="no_reviews">Нет отзывов</string>
+    <string name="no">Нет</string>
+    <string name="reviews_1">отзыв</string>
+    <string name="reviews_2_4">отзыва</string>
     <string name="to_reviews">Перейти к отзывам</string>
     <string name="text_reviews">Отзывы</string>
 </resources>

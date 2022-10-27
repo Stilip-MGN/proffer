@@ -50,7 +50,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?textAppearanceHeadline5"
                         app:layout_constrainedWidth="true"
-                        app:layout_constraintBottom_toTopOf="@id/city"
+                        app:layout_constraintBottom_toTopOf="@id/place"
                         app:layout_constraintEnd_toStartOf="@id/photo"
                         app:layout_constraintHorizontal_bias="0"
                         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
                         tools:text="Иван Иванов" />
 
                     <TextView
-                        android:id="@+id/city"
+                        android:id="@+id/place"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?textAppearanceBody1"
@@ -110,8 +110,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:hint="@string/no_active"
-                        android:textAppearance="?textAppearanceBody1" />
+                        android:textAppearance="?textAppearanceBody1"
+                        tools:hint="Нет активных" />
 
                     <TextView
                         android:id="@+id/btn_order"
@@ -151,8 +151,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:hint="@string/no_active"
-                        android:textAppearance="?textAppearanceBody1" />
+                        android:textAppearance="?textAppearanceBody1"
+                        tools:hint="Нет активных" />
 
                     <TextView
                         android:id="@+id/btn_ad"
@@ -236,11 +236,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:hint="@string/no_reviews"
                         android:drawablePadding="10dp"
                         android:textAppearance="?textAppearanceBody1"
                         app:drawableStartCompat="@drawable/ic_forum_24"
-                        app:drawableTint="@color/grey" />
+                        app:drawableTint="@color/grey"
+                        tools:hint="Нет отзывов" />
 
                     <TextView
                         android:id="@+id/btn_reviews"
