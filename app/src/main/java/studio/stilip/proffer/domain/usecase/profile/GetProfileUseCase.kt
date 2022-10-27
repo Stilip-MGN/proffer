@@ -1,4 +1,4 @@
-package studio.stilip.proffer.domain.usecase.search
+package studio.stilip.proffer.domain.usecase.profile
 
 import studio.stilip.proffer.domain.repository_interface.ProfileRepository
 import javax.inject.Inject

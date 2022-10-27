@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 import studio.stilip.proffer.domain.entities.Profile
-import studio.stilip.proffer.domain.usecase.search.GetProfileUseCase
+import studio.stilip.proffer.domain.usecase.profile.GetProfileUseCase
 import javax.inject.Inject
 
 @HiltViewModel
