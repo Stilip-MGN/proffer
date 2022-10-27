@@ -7,8 +7,8 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 import studio.stilip.proffer.domain.entities.Ad
 import studio.stilip.proffer.domain.entities.Seller
-import studio.stilip.proffer.domain.usecase.search.GetFavoritesAdsUseCase
-import studio.stilip.proffer.domain.usecase.search.GetSubscribedSellersUseCase
+import studio.stilip.proffer.domain.usecase.favorites.GetFavoritesAdsUseCase
+import studio.stilip.proffer.domain.usecase.favorites.GetSubscribedSellersUseCase
 import javax.inject.Inject
 
 @HiltViewModel
