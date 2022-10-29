@@ -20,4 +20,9 @@
     <string name="reviews_2_4">отзыва</string>
     <string name="to_reviews">Перейти к отзывам</string>
     <string name="text_reviews">Отзывы</string>
+    <string name="description">Описание</string>
+    <string name="buy_with_delivery">Купить с доставкой</string>
+    <string name="characteristics">Характеристики</string>
+    <string name="address">Адрес</string>
+    <string name="similar_products">Похожие товары:</string>
 </resources>
