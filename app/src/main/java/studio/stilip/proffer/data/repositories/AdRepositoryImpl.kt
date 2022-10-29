@@ -26,4 +26,6 @@ class AdRepositoryImpl @Inject constructor() : AdRepository {
     override fun getRecommendedAds(): Single<List<Ad>> = Single.just(ads)
 
     override fun getFavoritesAds(): Single<List<Ad>> = Single.just(fav)
+
+    override fun getAdById(id: Int): Single<Ad> = Single.just(ads.first { ad -> ad.id == id })
 }

@@ -8,4 +8,6 @@ interface AdRepository {
     fun getRecommendedAds(): Single<List<Ad>>
 
     fun getFavoritesAds(): Single<List<Ad>>
+
+    fun getAdById(id: Int): Single<Ad>
 }
