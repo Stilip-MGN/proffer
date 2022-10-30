@@ -18,12 +18,25 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
         val binding = FragmentProductBinding.bind(view)
 
         viewModel.ad.subscribe { ad ->
-            with(binding){
+            with(binding) {
                 productName.text = ad.name
                 productPrice.text = ad.price.toString()
                 textDescription.text = ad.description
                 textCharacteristics.text = ad.characteristics
                 textAddress.text = ad.address
+            }
+        }
+
+        viewModel.seller.subscribe { seller ->
+            with(binding) {
+                sellerName.text = seller.name
+                sellerRating.text = seller.rating.toString()
+                sellerCountReviews.text = when (seller.countReviews % 10) {
+                    0 -> "0 ${getString(R.string.reviews)}"
+                    1 -> "1 ${getString(R.string.reviews_1)}"
+                    in 2..4 -> "${seller.countReviews} ${getString(R.string.reviews_2_4)}"
+                    else -> "${seller.countReviews} ${getString(R.string.reviews)}"
+                }
             }
         }
     }

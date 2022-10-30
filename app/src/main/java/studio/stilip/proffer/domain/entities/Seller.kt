@@ -5,5 +5,5 @@ data class Seller(
     val name: String,
     val photo: String,
     val rating: Double,
-    val reviewsCount: Int
+    val countReviews: Int
 )
