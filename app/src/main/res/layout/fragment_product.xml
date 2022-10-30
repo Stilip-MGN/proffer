@@ -193,11 +193,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="5dp"
-            tools:text="Серый и хороший"
             android:textAppearance="?textAppearanceBody1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_description" />
+            app:layout_constraintTop_toBottomOf="@id/title_description"
+            tools:text="Серый и хороший" />
 
         <TextView
             android:id="@+id/title_characteristics"
@@ -217,11 +217,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="5dp"
-            tools:text="Размер 10м"
             android:textAppearance="?textAppearanceBody1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_characteristics" />
+            app:layout_constraintTop_toBottomOf="@id/title_characteristics"
+            tools:text="Размер 10м" />
 
         <TextView
             android:id="@+id/title_address"
@@ -241,14 +241,14 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="5dp"
-            tools:text="Екатеринбург, ул. Чкалова,231"
             android:textAppearance="?textAppearanceBody1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_address" />
+            app:layout_constraintTop_toBottomOf="@id/title_address"
+            tools:text="Екатеринбург, ул. Чкалова,231" />
 
         <TextView
-            android:id="@+id/text_similar"
+            android:id="@+id/title_similar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
@@ -269,7 +269,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_similar"
+            app:layout_constraintTop_toBottomOf="@id/title_similar"
             app:layout_constraintVertical_bias="0"
             app:spanCount="2"
             tools:listitem="@layout/card_product" />

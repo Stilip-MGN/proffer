@@ -10,7 +10,7 @@ import studio.stilip.proffer.databinding.FragmentProductBinding
 
 @AndroidEntryPoint
 class ProductFragment : Fragment(R.layout.fragment_product) {
-    // stateHandle: SavedStateHandle
+
     private val viewModel: ProductViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -21,6 +21,9 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
             with(binding){
                 productName.text = ad.name
                 productPrice.text = ad.price.toString()
+                textDescription.text = ad.description
+                textCharacteristics.text = ad.characteristics
+                textAddress.text = ad.address
             }
         }
     }
