@@ -2,6 +2,7 @@ package studio.stilip.proffer.app.fragments.product
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,6 +17,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentProductBinding.bind(view)
+        var isFavorite = false
 
         viewModel.ad.subscribe { ad ->
             with(binding) {
@@ -36,6 +38,23 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
                     1 -> "1 ${getString(R.string.reviews_1)}"
                     in 2..4 -> "${seller.countReviews} ${getString(R.string.reviews_2_4)}"
                     else -> "${seller.countReviews} ${getString(R.string.reviews)}"
+                }
+            }
+        }
+
+        with(binding) {
+            btnBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
+
+            btnFavorite.setOnClickListener {
+                isFavorite = !isFavorite
+                if (isFavorite) {
+                    btnFavorite.setImageResource(R.drawable.ic_favorite_24)
+                    btnFavorite.setColorFilter(ContextCompat.getColor(it.context, R.color.red))
+                } else {
+                    btnFavorite.setImageResource(R.drawable.ic_favorite_empty_24)
+                    btnFavorite.setColorFilter(ContextCompat.getColor(it.context, R.color.black))
                 }
             }
         }

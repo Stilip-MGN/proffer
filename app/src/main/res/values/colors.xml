@@ -11,4 +11,5 @@
     <color name="icon">#00D5D5</color>
     <color name="grey">#9F9F9F</color>
     <color name="yellow">#FFC107</color>
+    <color name="red">#F44336</color>
 </resources>
