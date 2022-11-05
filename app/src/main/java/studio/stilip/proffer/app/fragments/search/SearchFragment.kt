@@ -20,15 +20,17 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentSearchBinding.bind(view)
 
-        val adAdapter = AdListAdapter { id ->
+        val adAdapter = AdListAdapter({ id ->
             val args = Bundle().apply {
-                putInt(ID_AD,id)
+                putInt(ID_AD, id)
             }
             findNavController(view).navigate(
                 R.id.action_navigation_search_to_navigation_product,
                 args
             )
-        }
+        }, { id ->
+            viewModel.changeFavoriteStatusById(id)
+        })
 
         with(binding) {
             recRecommendations.adapter = adAdapter

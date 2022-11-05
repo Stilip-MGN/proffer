@@ -24,4 +24,8 @@ class SearchViewModel @Inject constructor(
                 ads.onNext(bb)
             }
     }
+
+    fun changeFavoriteStatusById(id_product: Int) {
+
+    }
 }
