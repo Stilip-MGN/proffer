@@ -29,9 +29,8 @@ class ProductViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { ad ->
                 this.ad.onNext(ad)
-                loadProfile(ad.id_seller)
+                loadProfile(ad.idSeller)
             }
-
     }
 
     private fun loadProfile(id: Int) {

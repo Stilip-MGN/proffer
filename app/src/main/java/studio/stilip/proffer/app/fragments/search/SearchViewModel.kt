@@ -15,7 +15,7 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(
     private val getRecommendedAds: GetRecommendedAdsUseCase,
     private val addAdToFavoriteById: AddAdToFavoriteByIdUseCase,
-    private val removeAdFromFavoriteById: RemoveAdFromFavoriteByIdUseCase
+    private val removeAdFromFavoriteById: RemoveAdFromFavoriteByIdUseCase,
 ) : ViewModel() {
 
     val ads = BehaviorSubject.create<List<Ad>>().apply { getRecommended() }
@@ -24,14 +24,34 @@ class SearchViewModel @Inject constructor(
         getRecommendedAds()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { bb ->
-                ads.onNext(bb)
+            .subscribe { list ->
+                ads.onNext(list)
             }
     }
 
     fun changeFavoriteStatusById(id_product: Int) {
-        addAdToFavoriteById(id_product)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+        val ad = ads.value!!.first { ad -> ad.id == id_product }
+        if (ad.isFavorite)
+            removeAdFromFavoriteById(id_product)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    ads.onNext((ads.value!!.map { el ->
+                        if (el.id == id_product) ad.copy(
+                            isFavorite = false
+                        ) else el
+                    }))
+                }
+        else
+            addAdToFavoriteById(id_product)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    ads.onNext((ads.value!!.map { el ->
+                        if (el.id == id_product) ad.copy(
+                            isFavorite = true
+                        ) else el
+                    }))
+                }
     }
 }

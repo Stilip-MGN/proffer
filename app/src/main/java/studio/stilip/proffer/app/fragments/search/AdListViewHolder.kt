@@ -1,5 +1,6 @@
 package studio.stilip.proffer.app.fragments.search
 
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import studio.stilip.proffer.R
@@ -26,18 +27,20 @@ class AdListViewHolder(
         price.text = ad.price.toString()
         name.text = ad.name
 
-        var isFavorite = false
-        btnFavorite.setOnClickListener {
-            onFavoriteClicked(ad.id)
-
-            isFavorite = !isFavorite
-            if (isFavorite) {
+        fun changeBtnFavorite() {
+            if (ad.isFavorite) {
                 btnFavorite.setImageResource(R.drawable.ic_favorite_24)
-                btnFavorite.setColorFilter(ContextCompat.getColor(it.context, R.color.red))
+                btnFavorite.setColorFilter(ContextCompat.getColor(btnFavorite.context, R.color.red))
             } else {
                 btnFavorite.setImageResource(R.drawable.ic_favorite_empty_24)
-                btnFavorite.setColorFilter(ContextCompat.getColor(it.context, R.color.black))
+                btnFavorite.setColorFilter(ContextCompat.getColor(btnFavorite.context, R.color.black))
             }
+        }
+        changeBtnFavorite()
+
+        btnFavorite.setOnClickListener {
+            onFavoriteClicked(ad.id)
+            changeBtnFavorite()
         }
     }
 }
