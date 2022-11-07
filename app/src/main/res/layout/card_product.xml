@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="220dp"
-    android:layout_margin="5dp"
+    android:layout_margin="10dp"
     app:cardCornerRadius="30dp"
     tools:backgroundTint="#fef">
 
@@ -52,10 +52,10 @@
             tools:text="Продам гараж очень красивый с надписью продам" />
 
         <ImageView
-            android:id="@+id/like"
+            android:id="@+id/btn_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_favorite_empty_24" />

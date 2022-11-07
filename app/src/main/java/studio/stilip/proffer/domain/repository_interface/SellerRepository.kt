@@ -7,4 +7,5 @@ interface SellerRepository {
 
     fun getSubscribedSellers(): Single<List<Seller>>
 
+    fun getSellerById(id: Int): Single<Seller>
 }

@@ -1,6 +1,6 @@
-package studio.stilip.proffer.domain.entities
+package studio.stilip.proffer.data.entities
 
-data class Ad(
+data class AdEntityForApi(
     val id: Int,
     val photo: String,
     val name: String,
@@ -9,5 +9,4 @@ data class Ad(
     val characteristics: String,
     val address: String,
     val idSeller: Int,
-    var isFavorite: Boolean = false,
 )

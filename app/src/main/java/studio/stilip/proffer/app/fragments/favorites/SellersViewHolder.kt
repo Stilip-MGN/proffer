@@ -15,6 +15,6 @@ class SellersViewHolder(
 
         name.text = seller.name
         rating.text = seller.rating.toString()
-        reviewsCount.text = seller.reviewsCount.toString()
+        reviewsCount.text = seller.countReviews.toString()
     }
 }

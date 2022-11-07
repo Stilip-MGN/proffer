@@ -34,7 +34,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 }
 
                 countReviews.hint = when (profile.countReviews % 10) {
-                    0 -> "${getString(R.string.no)} ${getString(R.string.active)}"
+                    0 -> "${getString(R.string.no)} ${getString(R.string.reviews)}"
                     1 -> "1 ${getString(R.string.reviews_1)}"
                     in 2..4 -> "${profile.countReviews} ${getString(R.string.reviews_2_4)}"
                     else -> "${profile.countReviews} ${getString(R.string.reviews)}"
