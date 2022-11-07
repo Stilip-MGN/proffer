@@ -17,7 +17,9 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentFavoritesBinding.bind(view)
 
-        val adAdapter = AdsFavoriteAdapter()
+        val adAdapter = AdsFavoriteAdapter { id ->
+            viewModel.removeFromFavoriteById(id)
+        }
         val sellersAdapter = SellersAdapter()
 
         with(binding) {
@@ -65,5 +67,10 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
                 sellersAdapter.submitList(list)
             }
         }
+    }
+
+    override fun onResume() {
+        viewModel.getFavorites()
+        super.onResume()
     }
 }
