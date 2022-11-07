@@ -20,7 +20,7 @@ class SearchViewModel @Inject constructor(
 
     val ads = BehaviorSubject.create<List<Ad>>().apply { getRecommended() }
 
-    private fun getRecommended() {
+    fun getRecommended() {
         getRecommendedAds()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

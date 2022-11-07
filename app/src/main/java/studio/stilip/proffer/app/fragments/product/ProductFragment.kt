@@ -17,7 +17,6 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentProductBinding.bind(view)
-        var isFavorite = false
 
         viewModel.ad.subscribe { ad ->
             with(binding) {
@@ -26,6 +25,24 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
                 textDescription.text = ad.description
                 textCharacteristics.text = ad.characteristics
                 textAddress.text = ad.address
+
+                if (ad.isFavorite) {
+                    btnFavorite.setImageResource(R.drawable.ic_favorite_24)
+                    btnFavorite.setColorFilter(
+                        ContextCompat.getColor(
+                            btnFavorite.context,
+                            R.color.red
+                        )
+                    )
+                } else {
+                    btnFavorite.setImageResource(R.drawable.ic_favorite_empty_24)
+                    btnFavorite.setColorFilter(
+                        ContextCompat.getColor(
+                            btnFavorite.context,
+                            R.color.black
+                        )
+                    )
+                }
             }
         }
 
@@ -48,14 +65,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
             }
 
             btnFavorite.setOnClickListener {
-                isFavorite = !isFavorite
-                if (isFavorite) {
-                    btnFavorite.setImageResource(R.drawable.ic_favorite_24)
-                    btnFavorite.setColorFilter(ContextCompat.getColor(it.context, R.color.red))
-                } else {
-                    btnFavorite.setImageResource(R.drawable.ic_favorite_empty_24)
-                    btnFavorite.setColorFilter(ContextCompat.getColor(it.context, R.color.black))
-                }
+                viewModel.onFavoriteClick()
             }
         }
     }

@@ -41,4 +41,10 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         }
 
     }
+
+    //TODO исправить
+    override fun onResume() {
+        viewModel.getRecommended()
+        super.onResume()
+    }
 }
