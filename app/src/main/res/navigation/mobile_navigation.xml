@@ -19,7 +19,11 @@
         android:id="@+id/navigation_favorites"
         android:name="studio.stilip.proffer.app.fragments.favorites.FavoritesFragment"
         android:label="@string/title_favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_navigation_favorites_to_navigation_product"
+            app:destination="@id/navigation_product" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
