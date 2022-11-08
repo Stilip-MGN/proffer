@@ -8,12 +8,14 @@ import studio.stilip.proffer.databinding.CardProductFavBinding
 import studio.stilip.proffer.domain.entities.Ad
 
 class AdsFavoriteAdapter(
+    private val onItemClicked: (Int) -> Unit,
     private val onRemoveFavoriteClicked: (Int) -> Unit
 ) : ListAdapter<Ad, AdsFavoriteViewHolder>(AdDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         AdsFavoriteViewHolder(
             CardProductFavBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+            onItemClicked,
             onRemoveFavoriteClicked
         )
 

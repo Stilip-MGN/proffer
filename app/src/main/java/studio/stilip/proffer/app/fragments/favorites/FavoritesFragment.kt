@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
+import studio.stilip.proffer.app.fragments.product.ProductFragment
 import studio.stilip.proffer.databinding.FragmentFavoritesBinding
 
 @AndroidEntryPoint
@@ -17,9 +19,17 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentFavoritesBinding.bind(view)
 
-        val adAdapter = AdsFavoriteAdapter { id ->
+        val adAdapter = AdsFavoriteAdapter({ id ->
+            val args = Bundle().apply {
+                putInt(ProductFragment.ID_AD, id)
+            }
+            Navigation.findNavController(view).navigate(
+                R.id.action_navigation_favorites_to_navigation_product,
+                args
+            )
+        } ,{ id ->
             viewModel.removeFromFavoriteById(id)
-        }
+        })
         val sellersAdapter = SellersAdapter()
 
         with(binding) {
