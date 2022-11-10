@@ -4,14 +4,17 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
+import studio.stilip.proffer.app.fragments.HostViewModel
 import studio.stilip.proffer.databinding.FragmentProductBinding
 
 @AndroidEntryPoint
 class ProductFragment : Fragment(R.layout.fragment_product) {
 
+    private val hostViewModel: HostViewModel by activityViewModels()
     private val viewModel: ProductViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -68,6 +71,11 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
                 viewModel.onFavoriteClick()
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        hostViewModel.setBottomBarVisible(false)
     }
 
     companion object {

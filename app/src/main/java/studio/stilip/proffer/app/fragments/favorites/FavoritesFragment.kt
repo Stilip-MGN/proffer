@@ -3,16 +3,19 @@ package studio.stilip.proffer.app.fragments.favorites
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
+import studio.stilip.proffer.app.fragments.HostViewModel
 import studio.stilip.proffer.app.fragments.product.ProductFragment
 import studio.stilip.proffer.databinding.FragmentFavoritesBinding
 
 @AndroidEntryPoint
 class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
 
+    private val hostViewModel: HostViewModel by activityViewModels()
     private val viewModel: FavoritesViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,7 +30,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
                 R.id.action_navigation_favorites_to_navigation_product,
                 args
             )
-        } ,{ id ->
+        }, { id ->
             viewModel.removeFromFavoriteById(id)
         })
         val sellersAdapter = SellersAdapter()
@@ -77,6 +80,11 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
                 sellersAdapter.submitList(list)
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        hostViewModel.setBottomBarVisible(true)
     }
 
     override fun onResume() {
