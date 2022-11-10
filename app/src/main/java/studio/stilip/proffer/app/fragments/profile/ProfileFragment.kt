@@ -3,14 +3,17 @@ package studio.stilip.proffer.app.fragments.profile
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
+import studio.stilip.proffer.app.fragments.HostViewModel
 import studio.stilip.proffer.databinding.FragmentProfileBinding
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
+    private val hostViewModel: HostViewModel by activityViewModels()
     private val viewModel: ProfileViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,5 +45,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        hostViewModel.setBottomBarVisible(true)
     }
 }
