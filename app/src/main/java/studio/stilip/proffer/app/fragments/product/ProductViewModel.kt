@@ -9,6 +9,7 @@ import io.reactivex.rxjava3.subjects.BehaviorSubject
 import studio.stilip.proffer.app.fragments.product.ProductFragment.Companion.ID_AD
 import studio.stilip.proffer.domain.entities.Ad
 import studio.stilip.proffer.domain.entities.Seller
+import studio.stilip.proffer.domain.usecase.product.GetSimilarAdsUseCase
 import studio.stilip.proffer.domain.usecase.search.AddAdToFavoriteByIdUseCase
 import studio.stilip.proffer.domain.usecase.search.GetAdByIdUseCase
 import studio.stilip.proffer.domain.usecase.search.GetSellerByIdUseCase
@@ -21,11 +22,22 @@ class ProductViewModel @Inject constructor(
     private val getSellerById: GetSellerByIdUseCase,
     private val addAdToFavoriteById: AddAdToFavoriteByIdUseCase,
     private val removeAdFromFavoriteById: RemoveAdFromFavoriteByIdUseCase,
+    private val getSimilarAds: GetSimilarAdsUseCase,
     stateHandle: SavedStateHandle
 ) : ViewModel() {
     private val adId: Int = stateHandle[ID_AD]!!
     var ad = BehaviorSubject.create<Ad>().apply { loadAd() }
     var seller = BehaviorSubject.create<Seller>()
+    val similarAds = BehaviorSubject.create<List<Ad>>()
+
+    fun loadSimilar() {
+        getSimilarAds(adId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { list ->
+                this.similarAds.onNext(list)
+            }
+    }
 
     private fun loadAd() {
         getAd(adId)
@@ -34,6 +46,7 @@ class ProductViewModel @Inject constructor(
             .subscribe { ad ->
                 this.ad.onNext(ad)
                 loadProfile(ad.idSeller)
+                loadSimilar()
             }
     }
 
@@ -60,6 +73,32 @@ class ProductViewModel @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     ad.onNext(ad.value!!.copy(isFavorite = true))
+                }
+    }
+
+    fun changeFavoriteStatusById(id_product: Int) {
+        val ad = similarAds.value!!.first { ad -> ad.id == id_product }
+        if (ad.isFavorite)
+            removeAdFromFavoriteById(id_product)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    similarAds.onNext((similarAds.value!!.map { el ->
+                        if (el.id == id_product) ad.copy(
+                            isFavorite = false
+                        ) else el
+                    }))
+                }
+        else
+            addAdToFavoriteById(id_product)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    similarAds.onNext((similarAds.value!!.map { el ->
+                        if (el.id == id_product) ad.copy(
+                            isFavorite = true
+                        ) else el
+                    }))
                 }
     }
 }
