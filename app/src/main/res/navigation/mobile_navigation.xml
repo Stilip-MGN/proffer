@@ -9,7 +9,7 @@
         android:id="@+id/navigation_search"
         android:name="studio.stilip.proffer.app.fragments.search.SearchFragment"
         android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" >
+        tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_navigation_search_to_navigation_product"
             app:destination="@id/navigation_product" />
@@ -19,7 +19,7 @@
         android:id="@+id/navigation_favorites"
         android:name="studio.stilip.proffer.app.fragments.favorites.FavoritesFragment"
         android:label="@string/title_favorites"
-        tools:layout="@layout/fragment_favorites" >
+        tools:layout="@layout/fragment_favorites">
         <action
             android:id="@+id/action_navigation_favorites_to_navigation_product"
             app:destination="@id/navigation_product" />
@@ -35,6 +35,10 @@
         android:id="@+id/navigation_product"
         android:name="studio.stilip.proffer.app.fragments.product.ProductFragment"
         android:label="@string/product"
-        tools:layout="@layout/fragment_product" />
+        tools:layout="@layout/fragment_product">
+        <action
+            android:id="@+id/action_navigation_product_self"
+            app:destination="@id/navigation_product" />
+    </fragment>
 
 </navigation>

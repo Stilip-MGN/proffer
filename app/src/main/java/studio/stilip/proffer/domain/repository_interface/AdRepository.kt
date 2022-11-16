@@ -15,4 +15,6 @@ interface AdRepository {
     fun addAdToFavoriteById(id: Int): Completable
 
     fun removeAdFromFavoriteById(id: Int): Completable
+
+    fun getSimilarAds(id: Int): Single<List<Ad>>
 }

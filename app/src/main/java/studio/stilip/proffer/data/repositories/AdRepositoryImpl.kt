@@ -55,4 +55,10 @@ class AdRepositoryImpl @Inject constructor() : AdRepository {
         fav.removeIf { ad -> ad.id_ad == id }
         return Completable.complete()
     }
+
+    override fun getSimilarAds(id: Int): Single<List<Ad>> =
+        Single.just(ads.map { adApi ->
+            adApi.toDomain()
+                .also { ad -> ad.isFavorite = fav.any { favTable -> favTable.id_ad == ad.id } }
+        }.filter { ad -> ad.id % 2 == id % 2 && ad.id != id })
 }

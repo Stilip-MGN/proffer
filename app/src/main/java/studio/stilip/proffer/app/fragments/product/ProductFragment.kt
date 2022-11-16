@@ -6,9 +6,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.fragments.HostViewModel
+import studio.stilip.proffer.app.fragments.search.AdListAdapter
 import studio.stilip.proffer.databinding.FragmentProductBinding
 
 @AndroidEntryPoint
@@ -20,6 +22,18 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentProductBinding.bind(view)
+
+        val adAdapter = AdListAdapter({ id ->
+            val args = Bundle().apply {
+                putInt(ID_AD, id)
+            }
+            Navigation.findNavController(view).navigate(
+                R.id.action_navigation_product_self,
+                args
+            )
+        }, { id ->
+            viewModel.changeFavoriteStatusById(id)
+        })
 
         viewModel.ad.subscribe { ad ->
             with(binding) {
@@ -62,6 +76,10 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
             }
         }
 
+        viewModel.similarAds.subscribe { list ->
+            adAdapter.submitList(list)
+        }
+
         with(binding) {
             btnBack.setOnClickListener {
                 requireActivity().onBackPressed()
@@ -70,12 +88,19 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
             btnFavorite.setOnClickListener {
                 viewModel.onFavoriteClick()
             }
+
+            recSimilar.adapter = adAdapter
         }
     }
 
     override fun onStart() {
         super.onStart()
         hostViewModel.setBottomBarVisible(false)
+    }
+
+    override fun onResume() {
+        viewModel.loadSimilar()
+        super.onResume()
     }
 
     companion object {
