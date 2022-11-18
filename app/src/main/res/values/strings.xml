@@ -27,4 +27,6 @@
     <string name="similar_products">Похожие товары:</string>
     <string name="product">Продукт</string>
     <string name="search_by_messages">Поиск по сообщениям</string>
+    <string name="title_messages">Сообщения</string>
+    <string name="title_chat">Чат</string>
 </resources>
