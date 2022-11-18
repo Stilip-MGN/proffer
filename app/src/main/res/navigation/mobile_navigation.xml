@@ -41,4 +41,18 @@
             app:destination="@id/navigation_product" />
     </fragment>
 
+    <fragment
+        android:id="@+id/navigation_messages"
+        android:label="Сообщения"
+        tools:layout="@layout/fragment_messages">
+        <action
+            android:id="@+id/action_navigation_messages_to_navigation_chat"
+            app:destination="@id/navigation_chat" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:label="Чат"
+        tools:layout="@layout/fragment_chat" />
+
 </navigation>
