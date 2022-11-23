@@ -29,4 +29,6 @@
     <string name="search_by_messages">Поиск по сообщениям</string>
     <string name="title_messages">Сообщения</string>
     <string name="title_chat">Чат</string>
+    <string name="new_add">новое объявление</string>
+    <string name="title_ads">Объявления</string>
 </resources>
