@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_margin="10dp"
+        android:background="@drawable/tools_shape"
+        android:elevation="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back_24" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:gravity="center"
+            android:text="@string/new_ad"
+            android:textAppearance="?textAppearanceHeadline6"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/btn_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/text_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/select_category"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <TextView
+        android:id="@+id/category_spares"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/spares"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintStart_toStartOf="@id/text_select"
+        app:layout_constraintTop_toBottomOf="@id/text_select" />
+
+    <TextView
+        android:id="@+id/category_tires"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/tires"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintStart_toStartOf="@id/category_spares"
+        app:layout_constraintTop_toBottomOf="@id/category_spares" />
+
+    <TextView
+        android:id="@+id/category_audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/audio_video"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintStart_toStartOf="@id/category_tires"
+        app:layout_constraintTop_toBottomOf="@id/category_tires" />
+
+    <TextView
+        android:id="@+id/category_accessories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/accessories"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintStart_toStartOf="@id/category_audio"
+        app:layout_constraintTop_toBottomOf="@id/category_audio" />
+
+    <TextView
+        android:id="@+id/category_tuning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/tuning"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintStart_toStartOf="@id/category_accessories"
+        app:layout_constraintTop_toBottomOf="@id/category_accessories" />
+
+    <TextView
+        android:id="@+id/category_trunks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/trunks"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintStart_toStartOf="@id/category_tuning"
+        app:layout_constraintTop_toBottomOf="@id/category_tuning" />
+
+    <TextView
+        android:id="@+id/category_tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/tools"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintStart_toStartOf="@id/category_trunks"
+        app:layout_constraintTop_toBottomOf="@id/category_trunks" />
+
+    <TextView
+        android:id="@+id/category_trailers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/trailers"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintStart_toStartOf="@id/category_tools"
+        app:layout_constraintTop_toBottomOf="@id/category_tools" />
+
+    <TextView
+        android:id="@+id/category_equipment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/equipment"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintStart_toStartOf="@id/category_trailers"
+        app:layout_constraintTop_toBottomOf="@id/category_trailers" />
+
+    <TextView
+        android:id="@+id/category_autocosmetics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/autocosmetics"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintStart_toStartOf="@id/category_equipment"
+        app:layout_constraintTop_toBottomOf="@id/category_equipment" />
+
+    <TextView
+        android:id="@+id/category_anti_theft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/anti_theft"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintStart_toStartOf="@id/category_autocosmetics"
+        app:layout_constraintTop_toBottomOf="@id/category_autocosmetics" />
+
+    <TextView
+        android:id="@+id/category_gps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/gps"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintStart_toStartOf="@id/category_anti_theft"
+        app:layout_constraintTop_toBottomOf="@id/category_anti_theft" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
