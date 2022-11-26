@@ -59,123 +59,146 @@
 
     <TextView
         android:id="@+id/category_spares"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
         android:text="@string/spares"
-        android:textAppearance="?textAppearanceHeadline6"
-        app:layout_constraintStart_toStartOf="@id/text_select"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_select" />
 
     <TextView
         android:id="@+id/category_tires"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
         android:text="@string/tires"
-        android:textAppearance="?textAppearanceHeadline6"
-        app:layout_constraintStart_toStartOf="@id/category_spares"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/category_spares" />
 
     <TextView
         android:id="@+id/category_audio"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
         android:text="@string/audio_video"
-        android:textAppearance="?textAppearanceHeadline6"
-        app:layout_constraintStart_toStartOf="@id/category_tires"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/category_tires" />
 
     <TextView
         android:id="@+id/category_accessories"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
         android:text="@string/accessories"
-        android:textAppearance="?textAppearanceHeadline6"
-        app:layout_constraintStart_toStartOf="@id/category_audio"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/category_audio" />
 
     <TextView
         android:id="@+id/category_tuning"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
         android:text="@string/tuning"
-        android:textAppearance="?textAppearanceHeadline6"
-        app:layout_constraintStart_toStartOf="@id/category_accessories"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/category_accessories" />
 
     <TextView
         android:id="@+id/category_trunks"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
         android:text="@string/trunks"
-        android:textAppearance="?textAppearanceHeadline6"
-        app:layout_constraintStart_toStartOf="@id/category_tuning"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/category_tuning" />
 
     <TextView
         android:id="@+id/category_tools"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
         android:text="@string/tools"
-        android:textAppearance="?textAppearanceHeadline6"
-        app:layout_constraintStart_toStartOf="@id/category_trunks"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/category_trunks" />
 
     <TextView
         android:id="@+id/category_trailers"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
         android:text="@string/trailers"
-        android:textAppearance="?textAppearanceHeadline6"
-        app:layout_constraintStart_toStartOf="@id/category_tools"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/category_tools" />
 
     <TextView
         android:id="@+id/category_equipment"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
         android:text="@string/equipment"
-        android:textAppearance="?textAppearanceHeadline6"
-        app:layout_constraintStart_toStartOf="@id/category_trailers"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/category_trailers" />
 
     <TextView
         android:id="@+id/category_autocosmetics"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
         android:text="@string/autocosmetics"
-        android:textAppearance="?textAppearanceHeadline6"
-        app:layout_constraintStart_toStartOf="@id/category_equipment"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/category_equipment" />
 
     <TextView
         android:id="@+id/category_anti_theft"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
         android:text="@string/anti_theft"
-        android:textAppearance="?textAppearanceHeadline6"
-        app:layout_constraintStart_toStartOf="@id/category_autocosmetics"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/category_autocosmetics" />
 
     <TextView
         android:id="@+id/category_gps"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
         android:text="@string/gps"
-        android:textAppearance="?textAppearanceHeadline6"
-        app:layout_constraintStart_toStartOf="@id/category_anti_theft"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/category_anti_theft" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
