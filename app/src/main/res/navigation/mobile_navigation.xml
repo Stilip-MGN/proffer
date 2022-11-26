@@ -60,6 +60,15 @@
         android:id="@+id/navigation_ads"
         android:name="studio.stilip.proffer.app.fragments.ads.AdsFragment"
         android:label="@string/title_ads"
-        tools:layout="@layout/fragment_ads" />
+        tools:layout="@layout/fragment_ads" >
+        <action
+            android:id="@+id/action_navigation_ads_to_navigation_category_selection"
+            app:destination="@id/navigation_category_selection" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_category_selection"
+        android:name="studio.stilip.proffer.app.fragments.ads.CategorySelectionFragment"
+        tools:layout="@layout/fragment_category_selection" />
 
 </navigation>
