@@ -45,4 +45,8 @@
     <string name="trailers">Прицепы</string>
     <string name="equipment">Экипировка</string>
     <string name="autocosmetics">Автокосметика и автохимия</string>
+    <string name="for_cars">Для автомобилей</string>
+    <string name="for_motorcycles">Для мототехники</string>
+    <string name="for_trucks_and_special_equipment">Для грузовиков и спецтехники</string>
+    <string name="for_water_transport">Для водного транспорта</string>
 </resources>
