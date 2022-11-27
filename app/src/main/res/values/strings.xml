@@ -49,4 +49,10 @@
     <string name="for_motorcycles">Для мототехники</string>
     <string name="for_trucks_and_special_equipment">Для грузовиков и спецтехники</string>
     <string name="for_water_transport">Для водного транспорта</string>
+    <string name="sign_in">Войти</string>
+    <string name="continue_sing">Продолжить</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="privacy_policy">Нажимая «Продолжить», вы принимаете лицензионное соглашение и политику конфиденциальности.</string>
+    <string name="password">Пароль</string>
+    <string name="login">Логин</string>
 </resources>
