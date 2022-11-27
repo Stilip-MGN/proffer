@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".app.fragments.ads.CategorySelectionFragment">
+    tools:context=".app.fragments.ads.CategorySparesFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
@@ -61,6 +61,8 @@
         android:id="@+id/category_for_car"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
         android:paddingHorizontal="40dp"
         android:paddingVertical="10dp"
         android:text="@string/for_cars"
@@ -73,6 +75,8 @@
         android:id="@+id/category_for_motor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
         android:paddingHorizontal="40dp"
         android:paddingVertical="10dp"
         android:text="@string/for_motorcycles"
@@ -85,6 +89,8 @@
         android:id="@+id/category_for_truck"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
         android:paddingHorizontal="40dp"
         android:paddingVertical="10dp"
         android:text="@string/for_trucks_and_special_equipment"
@@ -97,6 +103,8 @@
         android:id="@+id/category_for_water"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
         android:paddingHorizontal="40dp"
         android:paddingVertical="10dp"
         android:text="@string/for_water_transport"
