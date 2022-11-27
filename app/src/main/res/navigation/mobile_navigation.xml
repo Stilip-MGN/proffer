@@ -56,4 +56,28 @@
         android:label="@string/title_chat"
         tools:layout="@layout/fragment_chat" />
 
+    <fragment
+        android:id="@+id/navigation_ads"
+        android:name="studio.stilip.proffer.app.fragments.ads.AdsFragment"
+        android:label="@string/title_ads"
+        tools:layout="@layout/fragment_ads">
+        <action
+            android:id="@+id/action_navigation_ads_to_navigation_category_selection"
+            app:destination="@id/navigation_category_selection" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_category_selection"
+        android:name="studio.stilip.proffer.app.fragments.ads.CategorySelectionFragment"
+        tools:layout="@layout/fragment_category_selection">
+        <action
+            android:id="@+id/action_navigation_category_selection_to_navigation_category_spares"
+            app:destination="@id/navigation_category_spares" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_category_spares"
+        android:name="studio.stilip.proffer.app.fragments.ads.CategorySparesFragment"
+        tools:layout="@layout/fragment_category_spares" />
+
 </navigation>

@@ -29,4 +29,24 @@
     <string name="search_by_messages">Поиск по сообщениям</string>
     <string name="title_messages">Сообщения</string>
     <string name="title_chat">Чат</string>
+    <string name="new_add">новое объявление</string>
+    <string name="title_ads">Объявления</string>
+    <string name="new_ad">Новое объявление</string>
+    <string name="gps">GPS-навигаторы</string>
+    <string name="anti_theft">Противоугонные устройства</string>
+    <string name="select_category">Выберите категорию</string>
+    <string name="spares">Запчасти</string>
+    <string name="tires">Шины, диски и колёса</string>
+    <string name="audio_video">Аудио и видеотехника</string>
+    <string name="accessories">Аксессуары</string>
+    <string name="tuning">Тюнинг</string>
+    <string name="trunks">Багажники и фаркопы</string>
+    <string name="tools">Инструменты</string>
+    <string name="trailers">Прицепы</string>
+    <string name="equipment">Экипировка</string>
+    <string name="autocosmetics">Автокосметика и автохимия</string>
+    <string name="for_cars">Для автомобилей</string>
+    <string name="for_motorcycles">Для мототехники</string>
+    <string name="for_trucks_and_special_equipment">Для грузовиков и спецтехники</string>
+    <string name="for_water_transport">Для водного транспорта</string>
 </resources>
