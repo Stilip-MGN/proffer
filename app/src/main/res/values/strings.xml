@@ -55,4 +55,7 @@
     <string name="privacy_policy">Нажимая «Продолжить», вы принимаете лицензионное соглашение и политику конфиденциальности.</string>
     <string name="password">Пароль</string>
     <string name="login">Логин</string>
+    <string name="registration">Регистрация</string>
+    <string name="first_name_last_name">Имя Фамилия</string>
+    <string name="have_account">У меня уже есть аккаунт</string>
 </resources>
