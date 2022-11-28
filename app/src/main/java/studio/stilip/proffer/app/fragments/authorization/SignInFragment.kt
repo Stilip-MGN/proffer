@@ -8,23 +8,33 @@ import androidx.navigation.Navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.HostViewModel
-import studio.stilip.proffer.databinding.FragmentSingInBinding
+import studio.stilip.proffer.databinding.FragmentSignInBinding
+import studio.stilip.proffer.domain.entities.User
 
 @AndroidEntryPoint
-class SignInFragment : Fragment(R.layout.fragment_sing_in) {
+class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private val hostViewModel: HostViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentSingInBinding.bind(view)
+        val binding = FragmentSignInBinding.bind(view)
 
         hostViewModel.setBottomBarVisible(false)
 
         with(binding) {
             btnToRegistration.setOnClickListener {
                 findNavController(view).navigate(
-                    R.id.action_navigation_sing_in_to_navigation_registration
+                    R.id.action_navigation_sign_in_to_navigation_registration
+                )
+            }
+
+            btnContinue.setOnClickListener {
+                //хардкод
+                hostViewModel.setCurrentUser(User(1))
+
+                findNavController(view).navigate(
+                    R.id.action_navigation_sign_in_to_navigation_search
                 )
             }
         }

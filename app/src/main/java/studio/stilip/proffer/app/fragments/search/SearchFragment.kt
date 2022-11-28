@@ -22,6 +22,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentSearchBinding.bind(view)
 
+        if (!hostViewModel.currentUser.hasValue()) {
+            findNavController(view).navigate(
+                R.id.action_navigation_search_to_navigation_sign_in
+            )
+        }
+
         val adAdapter = AdListAdapter({ id ->
             val args = Bundle().apply {
                 putInt(ID_AD, id)

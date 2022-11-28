@@ -9,6 +9,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.HostViewModel
 import studio.stilip.proffer.databinding.FragmentRegistrationBinding
+import studio.stilip.proffer.domain.entities.User
 
 @AndroidEntryPoint
 class RegistrationFragment : Fragment(R.layout.fragment_registration) {
@@ -24,7 +25,16 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         with(binding) {
             btnToSignIn.setOnClickListener {
                 Navigation.findNavController(view).navigate(
-                    R.id.action_navigation_registration_to_navigation_sing_in
+                    R.id.action_navigation_registration_to_navigation_sign_in
+                )
+            }
+
+            btnContinue.setOnClickListener {
+                //хардкод
+                hostViewModel.setCurrentUser(User(1))
+
+                Navigation.findNavController(view).navigate(
+                    R.id.action_navigation_registration_to_navigation_search
                 )
             }
         }
