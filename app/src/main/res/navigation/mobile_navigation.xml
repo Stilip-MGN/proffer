@@ -6,6 +6,24 @@
     app:startDestination="@id/navigation_search">
 
     <fragment
+        android:id="@+id/navigation_sing_in"
+        android:name="studio.stilip.proffer.app.fragments.authorization.SignInFragment"
+        tools:layout="@layout/fragment_sing_in">
+        <action
+            android:id="@+id/action_navigation_sing_in_to_navigation_registration"
+            app:destination="@id/navigation_registration" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_registration"
+        android:name="studio.stilip.proffer.app.fragments.authorization.RegistrationFragment"
+        tools:layout="@layout/fragment_registration">
+        <action
+            android:id="@+id/action_navigation_registration_to_navigation_sing_in"
+            app:destination="@id/navigation_sing_in" />
+    </fragment>
+
+    <fragment
         android:id="@+id/navigation_search"
         android:name="studio.stilip.proffer.app.fragments.search.SearchFragment"
         android:label="@string/title_search"
@@ -13,6 +31,11 @@
         <action
             android:id="@+id/action_navigation_search_to_navigation_product"
             app:destination="@id/navigation_product" />
+        <action
+            android:id="@+id/action_navigation_search_to_navigation_sing_in"
+            app:destination="@id/navigation_sing_in"
+            app:popUpTo="@id/navigation_search"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment

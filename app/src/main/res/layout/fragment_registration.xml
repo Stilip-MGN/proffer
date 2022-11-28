@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".app.fragments.authorization.RegistrationFragment">
 
     <ImageView
         android:id="@+id/imageView"
@@ -123,7 +124,7 @@
                 app:layout_constraintTop_toBottomOf="@id/edit_email_layout" />
 
             <TextView
-                android:id="@+id/btn_registration"
+                android:id="@+id/btn_to_sign_in"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -144,7 +145,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_registration"
+                app:layout_constraintTop_toBottomOf="@id/btn_to_sign_in"
                 app:layout_constraintVertical_bias="1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
