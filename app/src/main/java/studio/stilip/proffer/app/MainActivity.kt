@@ -9,7 +9,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
-import studio.stilip.proffer.app.fragments.HostViewModel
 import studio.stilip.proffer.databinding.ActivityMainBinding
 
 @AndroidEntryPoint

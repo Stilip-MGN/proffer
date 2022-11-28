@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation.findNavController
 import studio.stilip.proffer.R
-import studio.stilip.proffer.app.fragments.HostViewModel
+import studio.stilip.proffer.app.HostViewModel
 import studio.stilip.proffer.databinding.FragmentCategorySelectionBinding
 
 class CategorySelectionFragment : Fragment(R.layout.fragment_category_selection) {

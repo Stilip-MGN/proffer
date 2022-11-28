@@ -8,7 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
 import studio.stilip.proffer.databinding.FragmentAdsBinding
 import androidx.navigation.Navigation.findNavController
-import studio.stilip.proffer.app.fragments.HostViewModel
+import studio.stilip.proffer.app.HostViewModel
 
 @AndroidEntryPoint
 class AdsFragment : Fragment(R.layout.fragment_ads) {
