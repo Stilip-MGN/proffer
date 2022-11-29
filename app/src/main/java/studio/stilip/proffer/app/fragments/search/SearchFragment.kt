@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
-import studio.stilip.proffer.app.fragments.HostViewModel
+import studio.stilip.proffer.app.HostViewModel
 import studio.stilip.proffer.app.fragments.product.ProductFragment.Companion.ID_AD
 import studio.stilip.proffer.databinding.FragmentSearchBinding
 
@@ -21,6 +21,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentSearchBinding.bind(view)
+
+        if (!hostViewModel.currentUser.hasValue()) {
+            findNavController(view).navigate(
+                R.id.action_navigation_search_to_navigation_sign_in
+            )
+        }
 
         val adAdapter = AdListAdapter({ id ->
             val args = Bundle().apply {

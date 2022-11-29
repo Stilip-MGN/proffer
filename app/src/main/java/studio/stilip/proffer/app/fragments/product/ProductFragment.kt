@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
-import studio.stilip.proffer.app.fragments.HostViewModel
+import studio.stilip.proffer.app.HostViewModel
 import studio.stilip.proffer.app.fragments.search.AdListAdapter
 import studio.stilip.proffer.databinding.FragmentProductBinding
 
