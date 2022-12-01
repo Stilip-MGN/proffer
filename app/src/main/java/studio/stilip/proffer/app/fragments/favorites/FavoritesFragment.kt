@@ -2,93 +2,58 @@ package studio.stilip.proffer.app.fragments.favorites
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.HostViewModel
-import studio.stilip.proffer.app.fragments.product.ProductFragment
+import studio.stilip.proffer.app.fragments.favorites.sellers.FavoritesSellersFragment
 import studio.stilip.proffer.databinding.FragmentFavoritesBinding
 
 @AndroidEntryPoint
 class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
 
     private val hostViewModel: HostViewModel by activityViewModels()
-    private val viewModel: FavoritesViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentFavoritesBinding.bind(view)
 
-        val adAdapter = AdsFavoriteAdapter({ id ->
-            val args = Bundle().apply {
-                putInt(ProductFragment.ID_AD, id)
-            }
-            Navigation.findNavController(view).navigate(
-                R.id.action_navigation_favorites_to_navigation_product,
-                args
-            )
-        }, { id ->
-            viewModel.removeFromFavoriteById(id)
-        })
-        val sellersAdapter = SellersAdapter()
+        hostViewModel.setBottomBarVisible(true)
+
+        val navHostFragment = this@FavoritesFragment.childFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_fav) as NavHostFragment
+
+        fun changeSelectedTextView(newFocusView: TextView, oldFocusView: TextView) {
+            newFocusView.setTextColor(getColor(newFocusView.context, R.color.black))
+            oldFocusView.setTextColor(getColor(oldFocusView.context, R.color.grey))
+        }
 
         with(binding) {
-            var isFav = true
-            recFav.adapter = adAdapter
-            recSubs.adapter = sellersAdapter
 
-            fun changeRecycle() {
-                if (isFav) {
-                    recFav.visibility = View.VISIBLE
-                    recSubs.visibility = View.GONE
-                    btnSub.hint = getString(R.string.btn_subs)
-                    btnSub.text = ""
-                    btnAds.text = getString(R.string.btn_ads)
-                    btnAds.hint = ""
-                } else {
-                    recSubs.visibility = View.VISIBLE
-                    recFav.visibility = View.GONE
-                    btnAds.hint = getString(R.string.btn_ads)
-                    btnAds.text = ""
-                    btnSub.text = getString(R.string.btn_subs)
-                    btnSub.hint = ""
+            btnAds.setOnClickListener {
+                if (btnAds.currentTextColor == getColor(btnAds.context, R.color.grey)) {
+                    changeSelectedTextView(btnAds, btnSub)
+
+                    navHostFragment.navController.navigate(R.id.navigation_favorites_ads)
                 }
             }
 
-            viewModel.isFav.subscribe {
-                isFav = it
-                changeRecycle()
-            }
-
-            btnAds.setOnClickListener {
-                if (!isFav) viewModel.isFav.onNext(true)
-            }
-
             btnSub.setOnClickListener {
-                if (isFav) viewModel.isFav.onNext(false)
+                if (btnSub.currentTextColor == getColor(btnSub.context, R.color.grey)) {
+                    changeSelectedTextView(btnSub, btnAds)
+
+                    navHostFragment.navController.navigate(R.id.navigation_favorites_subs)
+                }
+            }
+
+            when (navHostFragment.childFragmentManager.fragments[0]) {
+                is FavoritesSellersFragment -> changeSelectedTextView(btnSub, btnAds)
+                else -> changeSelectedTextView(btnAds, btnSub)
             }
         }
-
-        with(viewModel) {
-            ads.subscribe { list ->
-                adAdapter.submitList(list)
-            }
-            sellers.subscribe { list ->
-                sellersAdapter.submitList(list)
-            }
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        hostViewModel.setBottomBarVisible(true)
-    }
-
-    override fun onResume() {
-        viewModel.getFavorites()
-        super.onResume()
     }
 }

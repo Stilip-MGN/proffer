@@ -1,4 +1,4 @@
-package studio.stilip.proffer.app.fragments.favorites
+package studio.stilip.proffer.app.fragments.favorites.ads
 
 import androidx.recyclerview.widget.RecyclerView
 import studio.stilip.proffer.databinding.CardProductFavBinding
