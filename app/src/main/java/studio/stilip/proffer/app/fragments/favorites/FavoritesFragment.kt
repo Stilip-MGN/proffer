@@ -3,12 +3,13 @@ package studio.stilip.proffer.app.fragments.favorites
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.HostViewModel
-import studio.stilip.proffer.app.fragments.favorites.ads.FavoritesAdsFragment
 import studio.stilip.proffer.app.fragments.favorites.sellers.FavoritesSellersFragment
 import studio.stilip.proffer.databinding.FragmentFavoritesBinding
 
@@ -23,44 +24,35 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
 
         hostViewModel.setBottomBarVisible(true)
 
+        val navHostFragment = this@FavoritesFragment.childFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_fav) as NavHostFragment
+
         fun changeFocusTextView(newFocusView: TextView, oldFocusView: TextView) {
-            newFocusView.hint = newFocusView.text.also { newFocusView.text = newFocusView.hint }
-            oldFocusView.hint = oldFocusView.text.also { oldFocusView.text = oldFocusView.hint }
+            newFocusView.setTextColor(getColor(newFocusView.context, R.color.black))
+            oldFocusView.setTextColor(getColor(oldFocusView.context, R.color.grey))
         }
 
         with(binding) {
 
             btnAds.setOnClickListener {
-                if (btnAds.text.isEmpty()) {
-                    changeFocusTextView(btnSub, btnAds)
+                if (btnAds.currentTextColor == getColor(btnAds.context, R.color.grey)) {
+                    changeFocusTextView(btnAds, btnSub)
 
-                    this@FavoritesFragment.childFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.nav_host_fragment_fav, FavoritesAdsFragment())
-                        .commit()
+                    navHostFragment.navController.navigate(R.id.navigation_favorites_ads)
                 }
             }
 
             btnSub.setOnClickListener {
-                if (btnSub.text.isEmpty()) {
-                    changeFocusTextView(btnAds, btnSub)
+                if (btnSub.currentTextColor == getColor(btnSub.context, R.color.grey)) {
+                    changeFocusTextView(btnSub, btnAds)
 
-                    this@FavoritesFragment.childFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.nav_host_fragment_fav, FavoritesSellersFragment())
-                        .commit()
+                    navHostFragment.navController.navigate(R.id.navigation_favorites_subs)
                 }
             }
 
-            when (this@FavoritesFragment.childFragmentManager.findFragmentById(R.id.nav_host_fragment_fav)) {
-                is FavoritesSellersFragment -> {
-                    btnAds.hint = getString(R.string.btn_ads)
-                    btnAds.text = ""
-                }
-                else -> {
-                    btnSub.hint = getString(R.string.btn_subs)
-                    btnSub.text = ""
-                }
+            when (navHostFragment.childFragmentManager.fragments[0]) {
+                is FavoritesSellersFragment -> changeFocusTextView(btnSub, btnAds)
+                else -> changeFocusTextView(btnAds, btnSub)
             }
         }
     }
