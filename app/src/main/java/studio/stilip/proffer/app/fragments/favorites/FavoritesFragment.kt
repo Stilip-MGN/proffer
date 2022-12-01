@@ -27,7 +27,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
         val navHostFragment = this@FavoritesFragment.childFragmentManager
             .findFragmentById(R.id.nav_host_fragment_fav) as NavHostFragment
 
-        fun changeFocusTextView(newFocusView: TextView, oldFocusView: TextView) {
+        fun changeSelectedTextView(newFocusView: TextView, oldFocusView: TextView) {
             newFocusView.setTextColor(getColor(newFocusView.context, R.color.black))
             oldFocusView.setTextColor(getColor(oldFocusView.context, R.color.grey))
         }
@@ -36,7 +36,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
 
             btnAds.setOnClickListener {
                 if (btnAds.currentTextColor == getColor(btnAds.context, R.color.grey)) {
-                    changeFocusTextView(btnAds, btnSub)
+                    changeSelectedTextView(btnAds, btnSub)
 
                     navHostFragment.navController.navigate(R.id.navigation_favorites_ads)
                 }
@@ -44,15 +44,15 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
 
             btnSub.setOnClickListener {
                 if (btnSub.currentTextColor == getColor(btnSub.context, R.color.grey)) {
-                    changeFocusTextView(btnSub, btnAds)
+                    changeSelectedTextView(btnSub, btnAds)
 
                     navHostFragment.navController.navigate(R.id.navigation_favorites_subs)
                 }
             }
 
             when (navHostFragment.childFragmentManager.fragments[0]) {
-                is FavoritesSellersFragment -> changeFocusTextView(btnSub, btnAds)
-                else -> changeFocusTextView(btnAds, btnSub)
+                is FavoritesSellersFragment -> changeSelectedTextView(btnSub, btnAds)
+                else -> changeSelectedTextView(btnAds, btnSub)
             }
         }
     }
