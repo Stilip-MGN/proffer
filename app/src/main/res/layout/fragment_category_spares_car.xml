@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/background"
+    tools:context=".app.fragments.ads.CategorySparesCarFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
@@ -56,7 +57,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp">
+            android:layout_marginHorizontal="20dp"
+            android:paddingBottom="10dp">
 
             <TextView
                 android:id="@+id/title_name"
@@ -74,6 +76,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shape_rounded_stroke"
                 android:hint="@string/enter_title"
+                android:inputType="textCapSentences"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_name" />
@@ -94,6 +97,9 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shape_rounded_stroke"
                 android:hint="@string/enter_price"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLines="1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_price" />
@@ -180,6 +186,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shape_rounded_stroke"
                 android:hint="@string/entry_address"
+                android:inputType="textPostalAddress"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_location" />
@@ -214,6 +221,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/place_ad"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent" />

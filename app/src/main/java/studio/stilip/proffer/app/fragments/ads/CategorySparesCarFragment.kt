@@ -7,15 +7,15 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation.findNavController
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.HostViewModel
-import studio.stilip.proffer.databinding.FragmentCategorySparesBinding
+import studio.stilip.proffer.databinding.FragmentCategorySparesCarBinding
 
-class CategorySparesFragment : Fragment(R.layout.fragment_category_spares) {
+class CategorySparesCarFragment : Fragment(R.layout.fragment_category_spares_car) {
 
     private val hostViewModel: HostViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentCategorySparesBinding.bind(view)
+        val binding = FragmentCategorySparesCarBinding.bind(view)
 
         hostViewModel.setBottomBarVisible(false)
 
@@ -24,9 +24,9 @@ class CategorySparesFragment : Fragment(R.layout.fragment_category_spares) {
                 requireActivity().onBackPressed()
             }
 
-            categoryForCar.setOnClickListener {
+            btnPlaceAd.setOnClickListener {
                 findNavController(view).navigate(
-                    R.id.action_navigation_category_spares_to_category_spares_car
+                    R.id.action_navigation_category_spares_car_to_navigation_ads
                 )
             }
         }
