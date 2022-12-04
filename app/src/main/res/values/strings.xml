@@ -58,4 +58,16 @@
     <string name="registration">Регистрация</string>
     <string name="first_name_last_name">Имя Фамилия</string>
     <string name="have_account">У меня уже есть аккаунт</string>
+    <string name="title">Название</string>
+    <string name="enter_title">Введите название</string>
+    <string name="title_price">Цена</string>
+    <string name="enter_price">Укажите цену</string>
+    <string name="enter_product_information">Укажите информацию о товаре</string>
+    <string name="title_photo">Фотографии</string>
+    <string name="title_location">Местоположение</string>
+    <string name="entry_address">Укажите адрес</string>
+    <string name="title_phone">Телефон</string>
+    <string name="entry_phone_number">Укажите номер телефона</string>
+    <string name="place_ad">Разместить объявление</string>
+    <string name="no_more_then_10">Не более 10</string>
 </resources>
