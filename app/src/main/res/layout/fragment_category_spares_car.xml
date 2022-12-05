@@ -98,8 +98,6 @@
                 android:background="@drawable/shape_rounded_stroke"
                 android:hint="@string/enter_price"
                 android:inputType="number"
-                android:lines="1"
-                android:maxLines="1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_price" />
@@ -138,8 +136,7 @@
                 android:id="@+id/btn_add_photo"
                 android:layout_width="0dp"
                 android:layout_height="125dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_margin="10dp"
                 android:background="@drawable/shape_rounded_stroke"
                 android:padding="50dp"
                 android:src="@drawable/ic_photo_camera_24"
@@ -168,7 +165,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btn_add_photo"
-                app:spanCount="2" />
+                app:spanCount="2"
+                tools:listitem="@layout/card_photo" />
 
             <TextView
                 android:id="@+id/title_location"
