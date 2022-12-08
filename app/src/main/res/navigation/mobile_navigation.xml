@@ -121,12 +121,12 @@
 
     <fragment
         android:id="@+id/navigation_category_spares_car"
-        android:name="studio.stilip.proffer.app.fragments.ads.CategorySparesCarFragment"
-        tools:layout="@layout/fragment_category_spares_car" >
+        android:name="studio.stilip.proffer.app.fragments.ads.category.spares.car.CategorySparesCarFragment"
+        tools:layout="@layout/fragment_category_spares_car">
         <action
             android:id="@+id/action_navigation_category_spares_car_to_navigation_ads"
             app:destination="@id/navigation_ads"
-            app:popUpTo="@id/navigation_search"/>
+            app:popUpTo="@id/navigation_search" />
     </fragment>
 
 </navigation>
