@@ -2,6 +2,7 @@ package studio.stilip.proffer.app.fragments.ads.category.spares.car
 
 import android.net.Uri
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import studio.stilip.proffer.databinding.CardPhotoBinding
 
 class PhotoViewHolder(
@@ -13,7 +14,7 @@ class PhotoViewHolder(
 
     fun bind(item: Uri) = with(binding) {
         uri = item
-        photo.setImageURI(uri)
+        Glide.with(photo).load(uri).into(photo)
 
         btnDelete.setOnClickListener {
             onDeleteClicked(uri)

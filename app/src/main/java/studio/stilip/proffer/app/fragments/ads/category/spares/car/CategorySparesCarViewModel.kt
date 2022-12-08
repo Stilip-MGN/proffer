@@ -19,7 +19,7 @@ class CategorySparesCarViewModel @Inject constructor() : ViewModel() {
         imagesUri.onNext(list)
         imagesUri.onNext(
             if (imagesUri.value.isNullOrEmpty()) list
-            else imagesUri.value!!.plus(list).distinct()
+            else imagesUri.value!!.plus(list).distinct().take(10)
         )
     }
 }
