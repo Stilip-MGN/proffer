@@ -14,3 +14,15 @@ fun AdEntityForApi.toDomain(): Ad =
         address = this.address,
         idSeller = this.idSeller
     )
+
+fun Ad.toData(): AdEntityForApi =
+    AdEntityForApi(
+        id = this.id,
+        photo = this.photo,
+        name = this.name,
+        price = this.price,
+        description = this.description,
+        characteristics = this.characteristics,
+        address = this.address,
+        idSeller = this.idSeller
+    )

@@ -2,6 +2,7 @@ package studio.stilip.proffer.data.repositories
 
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
+import studio.stilip.proffer.data.dto.toData
 import studio.stilip.proffer.data.dto.toDomain
 import studio.stilip.proffer.data.entities.AdEntityForApi
 import studio.stilip.proffer.data.entities.AdFavoriteApi
@@ -14,7 +15,7 @@ import javax.inject.Singleton
 class AdRepositoryImpl @Inject constructor() : AdRepository {
 
     //хардкод
-    val ads = listOf(
+    val ads = mutableListOf(
         AdEntityForApi( 1, "", "Кружка", 100,"Большая и с картинкой", "Металлическая", "Екатеринбург, Толмачева 9", 1),
         AdEntityForApi(2, "", "Сок", 50, "Апельсиновый", "1 л.", "Екатеринбург, Толмачева 9", 1),
         AdEntityForApi(3, "", "Мотор", 1000, "Для надувной лодки", "15 л.с.", "Екатеринбург, Толмачева 9", 2),
@@ -61,4 +62,9 @@ class AdRepositoryImpl @Inject constructor() : AdRepository {
             adApi.toDomain()
                 .also { ad -> ad.isFavorite = fav.any { favTable -> favTable.id_ad == ad.id } }
         }.filter { ad -> ad.id % 2 == id % 2 && ad.id != id })
+
+    override fun addAd(ad: Ad): Completable {
+        ads.add(ad.toData())
+        return Completable.complete()
+    }
 }
