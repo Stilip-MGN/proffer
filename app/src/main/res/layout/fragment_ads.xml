@@ -31,7 +31,8 @@
         app:layout_constraintBottom_toTopOf="@id/btn_add_new_ad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        tools:listitem="@layout/card_my_ad" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_add_new_ad"
