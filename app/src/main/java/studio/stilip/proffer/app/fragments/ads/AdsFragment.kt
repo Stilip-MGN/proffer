@@ -19,6 +19,8 @@ class AdsFragment : Fragment(R.layout.fragment_ads) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentAdsBinding.bind(view)
 
+        val adapter = MyAdsAdapter()
+
         hostViewModel.setBottomBarVisible(true)
 
         with(binding) {
@@ -27,6 +29,8 @@ class AdsFragment : Fragment(R.layout.fragment_ads) {
                     R.id.action_navigation_ads_to_navigation_category_selection
                 )
             }
+
+            recMyAds.adapter = adapter
         }
     }
 }

@@ -65,8 +65,7 @@
             app:layout_constraintStart_toEndOf="@id/price" />
 
         <TextView
-            android:layout_marginTop="10dp"
-            android:id="@+id/close"
+            android:id="@+id/viewed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -75,18 +74,20 @@
             app:drawableStartCompat="@drawable/ic_visibility_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/favorite"
+            app:layout_constraintTop_toBottomOf="@id/rub"
             tools:text="5" />
 
         <TextView
-            android:layout_marginTop="10dp"
             android:id="@+id/favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginEnd="20dp"
             android:textAppearance="?textAppearanceBody1"
             app:drawableStartCompat="@drawable/ic_favorite_empty_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rub"
             tools:text="1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
