@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
 import studio.stilip.proffer.databinding.FragmentAdsBinding
@@ -14,6 +15,12 @@ import studio.stilip.proffer.app.HostViewModel
 class AdsFragment : Fragment(R.layout.fragment_ads) {
 
     private val hostViewModel: HostViewModel by activityViewModels()
+    private val viewModel: AdsViewModel by viewModels()
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getCurrentUserAds(hostViewModel.currentUser.value!!.id)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,6 +38,10 @@ class AdsFragment : Fragment(R.layout.fragment_ads) {
             }
 
             recMyAds.adapter = adapter
+        }
+
+        viewModel.ads.subscribe { list ->
+            adapter.submitList(list)
         }
     }
 }
