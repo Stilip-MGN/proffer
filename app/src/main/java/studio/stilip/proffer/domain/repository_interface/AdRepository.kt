@@ -19,4 +19,6 @@ interface AdRepository {
     fun getSimilarAds(id: Int): Single<List<Ad>>
 
     fun addAd(ad: Ad): Completable
+
+    fun getAdsByUserId(id: Int): Single<List<Ad>>
 }
