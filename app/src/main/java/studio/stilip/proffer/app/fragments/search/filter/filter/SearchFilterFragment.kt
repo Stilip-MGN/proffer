@@ -18,7 +18,7 @@ class SearchFilterFragment : Fragment(R.layout.fragment_search_filter) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentSearchFilterBinding.bind(view)
 
-        hostViewModel.setBottomBarVisible(true)
+        hostViewModel.setBottomBarVisible(false)
 
         with(binding) {
 

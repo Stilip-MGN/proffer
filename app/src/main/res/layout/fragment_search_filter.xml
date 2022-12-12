@@ -46,15 +46,16 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_apply"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginHorizontal="20dp">
 
             <TextView
                 android:id="@+id/title_category"
@@ -73,59 +74,81 @@
                 app:layout_constraintTop_toBottomOf="@id/title_category">
 
                 <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/spares" />
+                    android:text="@string/spares"
+                    android:textAppearance="?textAppearanceBody1" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tires" />
+                    android:text="@string/tires"
+                    android:textAppearance="?textAppearanceBody1" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/audio_video" />
+                    android:text="@string/audio_video"
+                    android:textAppearance="?textAppearanceBody1" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/accessories" />
+                    android:text="@string/accessories"
+                    android:textAppearance="?textAppearanceBody1" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tuning" />
+                    android:text="@string/tuning"
+                    android:textAppearance="?textAppearanceBody1" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/trunks" />
+                    android:text="@string/trunks"
+                    android:textAppearance="?textAppearanceBody1" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tools" />
+                    android:text="@string/tools"
+                    android:textAppearance="?textAppearanceBody1" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/trailers" />
+                    android:text="@string/trailers"
+                    android:textAppearance="?textAppearanceBody1" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/equipment" />
+                    android:text="@string/equipment"
+                    android:textAppearance="?textAppearanceBody1" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/anti_theft" />
+                    android:text="@string/anti_theft"
+                    android:textAppearance="?textAppearanceBody1" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/gps" />
+                    android:text="@string/gps"
+                    android:textAppearance="?textAppearanceBody1" />
 
             </com.google.android.material.chip.ChipGroup>
 
@@ -145,7 +168,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shape_rounded_stroke"
                 android:hint="@string/entry_name_of_city"
-                android:inputType="textCapSentences"
+                android:inputType="textPostalAddress"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_city" />
@@ -164,9 +187,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
                 android:background="@drawable/shape_rounded_stroke"
                 android:hint="@string/from"
-                android:inputType="textCapSentences"
+                android:inputType="number"
                 app:layout_constraintEnd_toStartOf="@id/edit_price_to"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_price" />
@@ -175,10 +199,11 @@
                 android:id="@+id/edit_price_to"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/shape_rounded_stroke"
                 android:hint="@string/to"
-                android:inputType="textCapSentences"
+                android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/edit_price_from"
                 app:layout_constraintTop_toBottomOf="@id/title_price" />
@@ -197,6 +222,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/buy"
+                android:textAppearance="?textAppearanceBody1"
                 app:layout_constraintTop_toBottomOf="@id/title_type" />
 
             <CheckBox
@@ -204,6 +230,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/sell"
+                android:textAppearance="?textAppearanceBody1"
                 app:layout_constraintTop_toBottomOf="@id/btn_buy" />
 
             <TextView
@@ -219,42 +246,60 @@
                 android:id="@+id/sort"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_sort">
 
                 <RadioButton
                     android:id="@+id/r_def"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/default_text" />
+                    android:text="@string/default_text"
+                    android:textAppearance="?textAppearanceBody1" />
 
                 <RadioButton
                     android:id="@+id/r_old"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/old_ones_first" />
+                    android:text="@string/old_ones_first"
+                    android:textAppearance="?textAppearanceBody1" />
 
                 <RadioButton
                     android:id="@+id/r_new"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/new_ones_first" />
+                    android:text="@string/new_ones_first"
+                    android:textAppearance="?textAppearanceBody1" />
 
                 <RadioButton
                     android:id="@+id/r_cheap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/cheap_ones_first" />
+                    android:text="@string/cheap_ones_first"
+                    android:textAppearance="?textAppearanceBody1" />
 
                 <RadioButton
                     android:id="@+id/r_expensive"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/expensive_ones_first" />
+                    android:text="@string/expensive_ones_first"
+                    android:textAppearance="?textAppearanceBody1" />
 
             </RadioGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/btn_apply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/apply_filter"
+        android:textAllCaps="false"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

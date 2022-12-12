@@ -90,4 +90,5 @@
     <string name="new_ones_first">Сначала новые</string>
     <string name="cheap_ones_first">Сначала дешевые</string>
     <string name="expensive_ones_first">Сначала дорогие</string>
+    <string name="apply_filter">Применить фильтр</string>
 </resources>
