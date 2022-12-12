@@ -42,6 +42,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         with(binding) {
             recRecommendations.adapter = adAdapter
+
+            searchField.setOnClickListener {
+                findNavController(view).navigate(
+                    R.id.action_navigation_search_to_search_with_filter,
+                )
+            }
         }
 
         viewModel.ads.subscribe { list ->
