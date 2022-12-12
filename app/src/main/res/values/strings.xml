@@ -75,4 +75,19 @@
     <string name="wait">Подождите…</string>
     <string name="fill_all_field">Заполните все поля</string>
     <string name="rub">₽</string>
+    <string name="specify">Уточнить</string>
+    <string name="all_category">Все категории</string>
+    <string name="city">Город</string>
+    <string name="entry_name_of_city">Введите название города</string>
+    <string name="from">От</string>
+    <string name="to">До</string>
+    <string name="ad_type">Тип объявления</string>
+    <string name="buy">Куплю</string>
+    <string name="sell">Продам</string>
+    <string name="sort_by">Сортировать по</string>
+    <string name="default_text">По умолчанию</string>
+    <string name="old_ones_first">Сначала старые</string>
+    <string name="new_ones_first">Сначала новые</string>
+    <string name="cheap_ones_first">Сначала дешевые</string>
+    <string name="expensive_ones_first">Сначала дорогие</string>
 </resources>
