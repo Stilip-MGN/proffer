@@ -14,12 +14,13 @@ import studio.stilip.proffer.databinding.FragmentSearchWithFilterBinding
 class SearchWithFilterFragment : Fragment(R.layout.fragment_search_with_filter) {
 
     private val hostViewModel: HostViewModel by activityViewModels()
+    private val viewModel: SearchFilterViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentSearchWithFilterBinding.bind(view)
 
-        hostViewModel.setBottomBarVisible(true)
+        hostViewModel.setBottomBarVisible(false)
 
         with(binding) {
             btnFilter.setOnClickListener {

@@ -254,6 +254,7 @@
                     android:id="@+id/r_def"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:text="@string/default_text"
                     android:textAppearance="?textAppearanceBody1" />
 
