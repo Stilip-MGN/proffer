@@ -70,4 +70,11 @@ class AdRepositoryImpl @Inject constructor() : AdRepository {
 
     override fun getAdsByUserId(id: Int): Single<List<Ad>> =
         Single.just(ads.filter { ad -> ad.idSeller == id }.map { adApi -> adApi.toDomain() })
+
+    override fun getAdsContainsString(string: String): Single<List<Ad>> {
+        return Single.just(ads.map { adApi ->
+            adApi.toDomain()
+                .also { ad -> ad.isFavorite = fav.any { favTable -> favTable.id_ad == ad.id } }
+        }.filter { ad -> ad.name.contains(string) })
+    }
 }

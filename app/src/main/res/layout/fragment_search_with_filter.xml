@@ -31,18 +31,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_arrow_back_24" />
 
-        <EditText
+        <SearchView
+            android:id="@+id/search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:background="@android:color/transparent"
-            android:hint="@string/title_search"
-            android:inputType="textCapSentences"
-            android:textAppearance="?textAppearanceHeadline6"
-            app:layout_constrainedWidth="true"
+            android:iconifiedByDefault="false"
+            android:queryBackground="@android:color/transparent"
+            android:queryHint="@string/title_search"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_filter"
-            app:layout_constraintStart_toEndOf="@+id/btn_back"
+            app:layout_constraintEnd_toStartOf="@id/btn_filter"
+            app:layout_constraintStart_toEndOf="@id/btn_back"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -75,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rec_recommendations"
+        android:id="@+id/rec_ads"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="10dp"

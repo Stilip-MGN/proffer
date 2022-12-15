@@ -7,12 +7,13 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 import studio.stilip.proffer.domain.entities.Ad
 import studio.stilip.proffer.domain.usecase.search.AddAdToFavoriteByIdUseCase
+import studio.stilip.proffer.domain.usecase.search.GetAdsContainsStringUseCase
 import studio.stilip.proffer.domain.usecase.search.RemoveAdFromFavoriteByIdUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class SearchFilterViewModel @Inject constructor(
-    //private val getRecommendedAds: GetRecommendedAdsUseCase,
+    private val getAdsContainsString: GetAdsContainsStringUseCase,
     private val addAdToFavoriteById: AddAdToFavoriteByIdUseCase,
     private val removeAdFromFavoriteById: RemoveAdFromFavoriteByIdUseCase,
 ) : ViewModel() {
@@ -49,5 +50,14 @@ class SearchFilterViewModel @Inject constructor(
                         ) else el
                     }))
                 }
+    }
+
+    fun findAdsContainsString(string: String) {
+        getAdsContainsString(string)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { list ->
+                ads.onNext(list)
+            }
     }
 }
