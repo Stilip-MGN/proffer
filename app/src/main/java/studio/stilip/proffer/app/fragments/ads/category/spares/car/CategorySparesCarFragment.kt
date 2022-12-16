@@ -67,6 +67,7 @@ class CategorySparesCarFragment : Fragment(R.layout.fragment_category_spares_car
                 val address = editLocation.text.toString()
                 val idSeller = hostViewModel.currentUser.value!!.id
                 val categories = arguments!!.getStringArrayList(LIST_CATEGORIES)!!
+                val isSell = rSell.isChecked
                 viewModel.saveAd(
                     Ad(
                         12,
@@ -75,6 +76,7 @@ class CategorySparesCarFragment : Fragment(R.layout.fragment_category_spares_car
                         price,
                         description,
                         "",
+                        isSell,
                         address,
                         idSeller,
                         categories

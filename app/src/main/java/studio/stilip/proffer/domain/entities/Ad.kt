@@ -7,6 +7,7 @@ data class Ad(
     val price: Int,
     val description: String,
     val characteristics: String,
+    val isSell: Boolean,
     val address: String,
     val idSeller: Int,
     val categories: List<String>,

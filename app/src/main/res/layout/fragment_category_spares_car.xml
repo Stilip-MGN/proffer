@@ -168,13 +168,46 @@
                 tools:listitem="@layout/card_photo" />
 
             <TextView
+                android:id="@+id/title_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/ad_type"
+                android:textAppearance="?textAppearanceHeadline6"
+                app:layout_constraintTop_toBottomOf="@id/rec_photos" />
+
+            <RadioGroup
+                android:id="@+id/type_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintTop_toBottomOf="@id/title_type">
+
+                <RadioButton
+                    android:id="@+id/r_sell"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/sell"
+                    android:textAppearance="?textAppearanceBody1" />
+
+                <RadioButton
+                    android:id="@+id/r_buy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/buy"
+                    android:textAppearance="?textAppearanceBody1" />
+
+            </RadioGroup>
+
+            <TextView
                 android:id="@+id/title_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/title_location"
                 android:textAppearance="?textAppearanceHeadline6"
-                app:layout_constraintTop_toBottomOf="@id/rec_photos" />
+                app:layout_constraintTop_toBottomOf="@id/type_group" />
 
             <EditText
                 android:id="@+id/edit_location"

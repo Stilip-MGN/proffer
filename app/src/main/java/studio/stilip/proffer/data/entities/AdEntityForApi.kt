@@ -7,6 +7,7 @@ data class AdEntityForApi(
     val price: Int,
     val description: String,
     val characteristics: String,
+    val isSell: Boolean,
     val address: String,
     val categories: List<String>,
     val idSeller: Int,
