@@ -43,6 +43,7 @@ class SearchWithFilterFragment : Fragment(R.layout.fragment_search_with_filter) 
 
         with(binding) {
             recAds.adapter = adapter
+            search.setQuery(viewModel.searchQuery, false)
 
             btnFilter.setOnClickListener {
                 findNavController(view).navigate(
@@ -64,6 +65,7 @@ class SearchWithFilterFragment : Fragment(R.layout.fragment_search_with_filter) 
                 }
 
                 override fun onQueryTextChange(query: String?): Boolean {
+                    viewModel.searchQuery = query ?: ""
                     return false
                 }
             })

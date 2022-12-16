@@ -26,6 +26,7 @@ class SearchFilterViewModel @Inject constructor(
     var priceTo: Int = 0
     var isBuy: Boolean = true
     var isSell: Boolean = false
+    var searchQuery: String = ""
 
     fun changeFavoriteStatusById(id_product: Int) {
         val ad = ads.value!!.first { ad -> ad.id == id_product }
@@ -63,7 +64,7 @@ class SearchFilterViewModel @Inject constructor(
             }
     }
 
-    private fun filterAds() {
+    fun filterAds() {
         var newAds = allAds.value!!
         if (priceFrom != 0) newAds = newAds.filter { ad -> ad.price >= priceFrom }
         if (priceTo != 0) newAds = newAds.filter { ad -> ad.price <= priceTo }

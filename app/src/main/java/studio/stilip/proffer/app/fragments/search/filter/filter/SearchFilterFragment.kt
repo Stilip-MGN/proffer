@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation.findNavController
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
@@ -58,7 +59,10 @@ class SearchFilterFragment : Fragment(R.layout.fragment_search_filter) {
                     .map { c -> c.text.toString() }
 
                 viewModel.categories.addAll(res)
-                requireActivity().onBackPressed()
+                viewModel.filterAds()
+                findNavController(view).navigate(
+                    R.id.action_navigation_search_filter_to_search_with_filter
+                )
             }
 
             //Заполнение из vm
