@@ -75,6 +75,6 @@ class AdRepositoryImpl @Inject constructor() : AdRepository {
         return Single.just(ads.map { adApi ->
             adApi.toDomain()
                 .also { ad -> ad.isFavorite = fav.any { favTable -> favTable.id_ad == ad.id } }
-        }.filter { ad -> ad.name.contains(string) })
+        }.filter { ad -> ad.name.contains(string,true) })
     }
 }

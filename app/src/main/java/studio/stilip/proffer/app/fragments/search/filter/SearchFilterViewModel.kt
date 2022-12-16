@@ -19,6 +19,7 @@ class SearchFilterViewModel @Inject constructor(
 ) : ViewModel() {
 
     val ads = BehaviorSubject.create<List<Ad>>().apply { emptyList<Ad>() }
+    private val allAds = BehaviorSubject.create<List<Ad>>().apply { emptyList<Ad>() }
     val categories = mutableListOf<String>()
     var location: String = ""
     var priceFrom: Int = 0
@@ -57,7 +58,15 @@ class SearchFilterViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { list ->
-                ads.onNext(list)
+                allAds.onNext(list)
+                filterAds()
             }
+    }
+
+    private fun filterAds() {
+        var newAds = allAds.value!!
+        if (priceFrom != 0) newAds = newAds.filter { ad -> ad.price >= priceFrom }
+        if (priceTo != 0) newAds = newAds.filter { ad -> ad.price <= priceTo }
+        ads.onNext(newAds)
     }
 }
