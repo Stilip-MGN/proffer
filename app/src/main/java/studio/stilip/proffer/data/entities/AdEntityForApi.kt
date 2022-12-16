@@ -8,5 +8,6 @@ data class AdEntityForApi(
     val description: String,
     val characteristics: String,
     val address: String,
+    val categories: List<String>,
     val idSeller: Int,
 )

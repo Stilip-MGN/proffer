@@ -66,7 +66,7 @@ class CategorySparesCarFragment : Fragment(R.layout.fragment_category_spares_car
                 val description = editDescription.text.toString()
                 val address = editLocation.text.toString()
                 val idSeller = hostViewModel.currentUser.value!!.id
-                viewModel.saveAd(Ad(12, "", name, price, description, "", address, idSeller))
+                viewModel.saveAd(Ad(12, "", name, price, description, "", address,idSeller, emptyList()))
                 Toast.makeText(activity, getString(R.string.wait), Toast.LENGTH_SHORT).show()
             }
 

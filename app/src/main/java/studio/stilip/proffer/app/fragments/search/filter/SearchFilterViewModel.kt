@@ -66,8 +66,21 @@ class SearchFilterViewModel @Inject constructor(
 
     fun filterAds() {
         var newAds = allAds.value!!
+        if (categories.isNotEmpty()) {
+            newAds=newAds.filter { ad ->
+                categories.any { category -> ad.categories.contains(category) }
+            }
+        }
         if (priceFrom != 0) newAds = newAds.filter { ad -> ad.price >= priceFrom }
         if (priceTo != 0) newAds = newAds.filter { ad -> ad.price <= priceTo }
         ads.onNext(newAds)
     }
+    /*    categories.forEach { category ->
+                    if (ad.categories.contains(category)) {
+                        return@forEach true
+                        return@filter true
+                    }
+
+                }
+                false*/
 }

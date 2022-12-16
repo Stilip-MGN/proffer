@@ -12,6 +12,7 @@ fun AdEntityForApi.toDomain(): Ad =
         description = this.description,
         characteristics = this.characteristics,
         address = this.address,
+        categories = this.categories,
         idSeller = this.idSeller
     )
 
@@ -24,5 +25,6 @@ fun Ad.toData(): AdEntityForApi =
         description = this.description,
         characteristics = this.characteristics,
         address = this.address,
+        categories = this.categories,
         idSeller = this.idSeller
     )

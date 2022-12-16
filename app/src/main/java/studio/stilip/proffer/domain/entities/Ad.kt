@@ -9,5 +9,6 @@ data class Ad(
     val characteristics: String,
     val address: String,
     val idSeller: Int,
+    val categories: List<String>,
     var isFavorite: Boolean = false,
 )
