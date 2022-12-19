@@ -66,7 +66,22 @@ class CategorySparesCarFragment : Fragment(R.layout.fragment_category_spares_car
                 val description = editDescription.text.toString()
                 val address = editLocation.text.toString()
                 val idSeller = hostViewModel.currentUser.value!!.id
-                viewModel.saveAd(Ad(12, "", name, price, description, "", address, idSeller))
+                val categories = arguments!!.getStringArrayList(LIST_CATEGORIES)!!
+                val isSell = rSell.isChecked
+                viewModel.saveAd(
+                    Ad(
+                        12,
+                        "",
+                        name,
+                        price,
+                        description,
+                        "",
+                        isSell,
+                        address,
+                        idSeller,
+                        categories
+                    )
+                )
                 Toast.makeText(activity, getString(R.string.wait), Toast.LENGTH_SHORT).show()
             }
 
@@ -89,4 +104,8 @@ class CategorySparesCarFragment : Fragment(R.layout.fragment_category_spares_car
     }
 
     private fun isEditTextEmpty(editText: EditText) = editText.text.isEmpty()
+
+    companion object {
+        const val LIST_CATEGORIES = "list_categories"
+    }
 }

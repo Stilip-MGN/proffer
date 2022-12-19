@@ -48,6 +48,9 @@
             app:destination="@id/navigation_sign_in"
             app:popUpTo="@id/navigation_search"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_search_to_search_with_filter"
+            app:destination="@id/navigation_search_with_filter" />
     </fragment>
 
     <fragment
@@ -127,6 +130,31 @@
             android:id="@+id/action_navigation_category_spares_car_to_navigation_ads"
             app:destination="@id/navigation_ads"
             app:popUpTo="@id/navigation_search" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_search_with_filter"
+        android:name="studio.stilip.proffer.app.fragments.search.filter.SearchWithFilterFragment"
+        android:label="fragment_search_with_filter"
+        tools:layout="@layout/fragment_search_with_filter">
+        <action
+            android:id="@+id/action_navigation_search_with_filter_to_search_filter"
+            app:destination="@id/navigation_search_filter" />
+        <action
+            android:id="@+id/action_navigation_search_with_filter_to_product"
+            app:destination="@id/navigation_product" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_search_filter"
+        android:name="studio.stilip.proffer.app.fragments.search.filter.filter.SearchFilterFragment"
+        android:label="fragment_search_filter"
+        tools:layout="@layout/fragment_search_filter">
+        <action
+            android:id="@+id/action_navigation_search_filter_to_search_with_filter"
+            app:destination="@id/navigation_search_with_filter"
+            app:popUpTo="@id/navigation_search_with_filter"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

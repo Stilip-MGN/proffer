@@ -25,10 +25,19 @@ class CategorySparesFragment : Fragment(R.layout.fragment_category_spares) {
             }
 
             categoryForCar.setOnClickListener {
+                val list = arguments!!.getStringArrayList(LIST_CATEGORIES)!!
+                list.add(getString(R.string.for_cars))
+                val args = Bundle().apply {
+                    putStringArrayList(LIST_CATEGORIES, list)
+                }
                 findNavController(view).navigate(
-                    R.id.action_navigation_category_spares_to_category_spares_car
+                    R.id.action_navigation_category_spares_to_category_spares_car, args
                 )
             }
         }
+    }
+
+    companion object {
+        const val LIST_CATEGORIES = "list_categories"
     }
 }
