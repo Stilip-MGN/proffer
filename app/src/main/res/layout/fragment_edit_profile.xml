@@ -198,11 +198,22 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_delete"
+        android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="5dp"
+        android:backgroundTint="@color/white"
+        android:paddingVertical="15dp"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="@color/grey" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
         android:backgroundTint="@color/white"
         android:paddingVertical="15dp"
         android:text="@string/delete_profile"

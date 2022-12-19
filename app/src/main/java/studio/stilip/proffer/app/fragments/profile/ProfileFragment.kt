@@ -21,7 +21,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentProfileBinding.bind(view)
 
-        hostViewModel.setBottomBarVisible(false)
+        hostViewModel.setBottomBarVisible(true)
 
         with(binding) {
             btnControl.setOnClickListener {

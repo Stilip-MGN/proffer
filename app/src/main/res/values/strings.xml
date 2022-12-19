@@ -96,4 +96,5 @@
     <string name="e_mail">E-mail</string>
     <string name="delete_profile">Удалить профиль</string>
     <string name="exit">Выйти</string>
+    <string name="save">Сохранить</string>
 </resources>
