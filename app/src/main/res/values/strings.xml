@@ -92,4 +92,8 @@
     <string name="expensive_ones_first">Сначала дорогие</string>
     <string name="apply_filter">Применить фильтр</string>
     <string name="one_ad_type_must_be_selected">Хотя бы один ТИП объявлений должен быть выбран</string>
+    <string name="profile_management">Управление профилем</string>
+    <string name="e_mail">E-mail</string>
+    <string name="delete_profile">Удалить профиль</string>
+    <string name="exit">Выйти</string>
 </resources>

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".app.fragments.profile.edit.EditProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
@@ -32,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:gravity="center"
-            android:text="Управление профилем"
+            android:text="@string/profile_management"
             android:textAppearance="?textAppearanceHeadline6"
             app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -143,7 +144,7 @@
             android:autofillHints="name"
             android:background="@drawable/tools_shape"
             android:hint="@string/title_phone"
-            android:inputType="textPersonName"
+            android:inputType="phone"
             android:lines="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -166,8 +167,8 @@
             android:layout_height="match_parent"
             android:autofillHints="name"
             android:background="@drawable/tools_shape"
-            android:hint="E-mail"
-            android:inputType="textPersonName"
+            android:hint="@string/e_mail"
+            android:inputType="textEmailAddress"
             android:lines="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -191,7 +192,7 @@
             android:autofillHints="name"
             android:background="@drawable/tools_shape"
             android:hint="@string/password"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:lines="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -204,7 +205,7 @@
         android:layout_marginTop="5dp"
         android:backgroundTint="@color/white"
         android:paddingVertical="15dp"
-        android:text="Удалить профиль"
+        android:text="@string/delete_profile"
         android:textAllCaps="false"
         android:textColor="@color/grey" />
 
@@ -215,7 +216,7 @@
         android:layout_marginHorizontal="20dp"
         android:backgroundTint="@color/white"
         android:paddingVertical="15dp"
-        android:text="Выйти"
+        android:text="@string/exit"
         android:textAllCaps="false"
         android:textColor="@color/grey" />
 

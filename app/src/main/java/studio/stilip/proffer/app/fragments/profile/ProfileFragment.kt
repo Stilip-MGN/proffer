@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.HostViewModel
@@ -19,6 +20,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentProfileBinding.bind(view)
+
+        hostViewModel.setBottomBarVisible(false)
+
+        with(binding) {
+            btnControl.setOnClickListener {
+                findNavController(view).navigate(
+                    R.id.action_navigation_profile_to_edit_profile
+                )
+            }
+        }
 
         viewModel.profile.subscribe { profile ->
             with(binding) {
@@ -45,10 +56,5 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
             }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        hostViewModel.setBottomBarVisible(true)
     }
 }
