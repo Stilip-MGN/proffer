@@ -6,7 +6,6 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 import io.reactivex.rxjava3.subjects.PublishSubject
-import io.reactivex.rxjava3.subjects.Subject
 import studio.stilip.proffer.domain.entities.User
 import studio.stilip.proffer.domain.usecase.user.ChangeDataUserUseCase
 import javax.inject.Inject

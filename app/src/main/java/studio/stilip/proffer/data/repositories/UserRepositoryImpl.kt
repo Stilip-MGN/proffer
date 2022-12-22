@@ -1,10 +1,7 @@
 package studio.stilip.proffer.data.repositories
 
 import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Single
-import studio.stilip.proffer.domain.entities.Profile
 import studio.stilip.proffer.domain.entities.User
-import studio.stilip.proffer.domain.repository_interface.ProfileRepository
 import studio.stilip.proffer.domain.repository_interface.UserRepository
 import javax.inject.Inject
 
