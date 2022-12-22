@@ -31,7 +31,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
             btnContinue.setOnClickListener {
                 //хардкод
-                hostViewModel.setCurrentUser(User(1))
+                hostViewModel.setCurrentUser(User(1, "", "", "", "", ""))
 
                 Navigation.findNavController(view).navigate(
                     R.id.action_navigation_registration_to_navigation_search

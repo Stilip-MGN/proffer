@@ -67,7 +67,11 @@
         android:id="@+id/navigation_profile"
         android:name="studio.stilip.proffer.app.fragments.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_navigation_profile_to_edit_profile"
+            app:destination="@id/navigation_edit_profile" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_product"
@@ -154,6 +158,18 @@
             android:id="@+id/action_navigation_search_filter_to_search_with_filter"
             app:destination="@id/navigation_search_with_filter"
             app:popUpTo="@id/navigation_search_with_filter"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_edit_profile"
+        android:name="studio.stilip.proffer.app.fragments.profile.edit.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile">
+        <action
+            android:id="@+id/action_navigation_edit_profile_to_profile"
+            app:destination="@id/navigation_profile"
+            app:popUpTo="@id/navigation_profile"
             app:popUpToInclusive="true" />
     </fragment>
 
