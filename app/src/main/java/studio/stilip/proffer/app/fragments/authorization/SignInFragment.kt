@@ -31,7 +31,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
             btnContinue.setOnClickListener {
                 //хардкод
-                hostViewModel.setCurrentUser(User(1))
+                hostViewModel.setCurrentUser(User(1, "", "", "", "", ""))
 
                 findNavController(view).navigate(
                     R.id.action_navigation_sign_in_to_navigation_search

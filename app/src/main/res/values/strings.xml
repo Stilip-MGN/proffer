@@ -97,4 +97,6 @@
     <string name="delete_profile">Удалить профиль</string>
     <string name="exit">Выйти</string>
     <string name="save">Сохранить</string>
+    <string name="could_not_save">Не удалось сохрать, попробуйте позже</string>
+    <string name="saved">Сохранено</string>
 </resources>

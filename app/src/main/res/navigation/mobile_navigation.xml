@@ -165,6 +165,12 @@
         android:id="@+id/navigation_edit_profile"
         android:name="studio.stilip.proffer.app.fragments.profile.edit.EditProfileFragment"
         android:label="fragment_edit_profile"
-        tools:layout="@layout/fragment_edit_profile" />
+        tools:layout="@layout/fragment_edit_profile">
+        <action
+            android:id="@+id/action_navigation_edit_profile_to_profile"
+            app:destination="@id/navigation_profile"
+            app:popUpTo="@id/navigation_profile"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>
