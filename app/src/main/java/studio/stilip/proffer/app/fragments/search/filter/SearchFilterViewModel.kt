@@ -65,6 +65,7 @@ class SearchFilterViewModel @Inject constructor(
     }
 
     fun filterAds() {
+        if (!allAds.hasValue()) return
         var newAds = allAds.value!!
         if (isSell != isBuy) {
             newAds = newAds.filter { ad -> ad.isSell == isBuy }
