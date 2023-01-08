@@ -2,6 +2,8 @@ package studio.stilip.proffer.app.fragments.ads
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -30,6 +32,15 @@ class AdsFragment : Fragment(R.layout.fragment_ads) {
 
         hostViewModel.setBottomBarVisible(true)
 
+        fun changeSelectedTextView(newFocusView: TextView, oldFocusView: TextView) {
+            newFocusView.setTextColor(ContextCompat.getColor(newFocusView.context, R.color.black))
+            oldFocusView.setTextColor(ContextCompat.getColor(oldFocusView.context, R.color.grey))
+        }
+
+        fun isTextColorTextViewTheSame(textView: TextView, idColor: Int): Boolean {
+            return textView.currentTextColor == ContextCompat.getColor(textView.context, idColor)
+        }
+
         with(binding) {
             btnAddNewAd.setOnClickListener {
                 findNavController(view).navigate(
@@ -38,6 +49,18 @@ class AdsFragment : Fragment(R.layout.fragment_ads) {
             }
 
             recMyAds.adapter = adapter
+
+            btnActive.setOnClickListener {
+                if (isTextColorTextViewTheSame(btnActive, R.color.grey)) {
+                    changeSelectedTextView(btnActive, btnCompleted)
+                }
+            }
+
+            btnCompleted.setOnClickListener {
+                if (isTextColorTextViewTheSame(btnCompleted, R.color.grey)) {
+                    changeSelectedTextView(btnCompleted, btnActive)
+                }
+            }
         }
 
         viewModel.ads.subscribe { list ->
