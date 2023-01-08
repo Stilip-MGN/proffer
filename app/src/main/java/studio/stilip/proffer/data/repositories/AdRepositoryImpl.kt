@@ -24,6 +24,11 @@ class AdRepositoryImpl @Inject constructor() : AdRepository {
         AdEntityForApi(6, "", "Тарелка", 190, "Использованная и одноразовая", "Пластик", true,"Екатеринбург, Толмачева 9", listOf(),2),
     )
 
+    val complAds = mutableListOf(
+        AdEntityForApi( 1, "", "Свеча", 1000,"Новая, на запчасти", "Металлическая", true,"Екатеринбург, Толмачева 9", listOf(),1),
+        AdEntityForApi(2, "", "Шины Bridgestone", 20000, "Летние", "Нагрузка до 100 кг", true,"Екатеринбург, Толмачева 9", listOf(),1),
+    )
+
     val fav = mutableListOf(
         AdFavoriteApi(1, 1, 1),
         AdFavoriteApi(2, 1, 2),
@@ -75,6 +80,9 @@ class AdRepositoryImpl @Inject constructor() : AdRepository {
         return Single.just(ads.map { adApi ->
             adApi.toDomain()
                 .also { ad -> ad.isFavorite = fav.any { favTable -> favTable.id_ad == ad.id } }
-        }.filter { ad -> ad.name.contains(string,true) })
+        }.filter { ad -> ad.name.contains(string, true) })
     }
+
+    override fun getComplitedAdsByUserId(id: Int): Single<List<Ad>> =
+        Single.just(complAds.filter { ad -> ad.idSeller == id }.map { adApi -> adApi.toDomain() })
 }

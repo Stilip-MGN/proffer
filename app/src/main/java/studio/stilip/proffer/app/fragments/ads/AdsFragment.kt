@@ -53,12 +53,14 @@ class AdsFragment : Fragment(R.layout.fragment_ads) {
             btnActive.setOnClickListener {
                 if (isTextColorTextViewTheSame(btnActive, R.color.grey)) {
                     changeSelectedTextView(btnActive, btnCompleted)
+                    viewModel.changeSelectAds(true)
                 }
             }
 
             btnCompleted.setOnClickListener {
                 if (isTextColorTextViewTheSame(btnCompleted, R.color.grey)) {
                     changeSelectedTextView(btnCompleted, btnActive)
+                    viewModel.changeSelectAds(false)
                 }
             }
         }
