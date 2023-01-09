@@ -6,31 +6,27 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
 import studio.stilip.proffer.databinding.FragmentAdsBinding
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import studio.stilip.proffer.app.HostViewModel
+import studio.stilip.proffer.app.fragments.ads.completed.AdsCompletedFragment
 
 @AndroidEntryPoint
 class AdsFragment : Fragment(R.layout.fragment_ads) {
 
     private val hostViewModel: HostViewModel by activityViewModels()
-    private val viewModel: AdsViewModel by viewModels()
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.getCurrentUserAds(hostViewModel.currentUser.value!!.id)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentAdsBinding.bind(view)
 
-        val adapter = MyAdsAdapter()
-
         hostViewModel.setBottomBarVisible(true)
+
+        val navHostFragment = this@AdsFragment.childFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_ads) as NavHostFragment
 
         fun changeSelectedTextView(newFocusView: TextView, oldFocusView: TextView) {
             newFocusView.setTextColor(ContextCompat.getColor(newFocusView.context, R.color.black))
@@ -42,31 +38,32 @@ class AdsFragment : Fragment(R.layout.fragment_ads) {
         }
 
         with(binding) {
+
             btnAddNewAd.setOnClickListener {
                 findNavController(view).navigate(
                     R.id.action_navigation_ads_to_navigation_category_selection
                 )
             }
 
-            recMyAds.adapter = adapter
-
             btnActive.setOnClickListener {
                 if (isTextColorTextViewTheSame(btnActive, R.color.grey)) {
                     changeSelectedTextView(btnActive, btnCompleted)
-                    viewModel.changeSelectAds(true)
+                    navHostFragment.navController.navigate(R.id.navigation_ads_active)
                 }
             }
 
             btnCompleted.setOnClickListener {
                 if (isTextColorTextViewTheSame(btnCompleted, R.color.grey)) {
                     changeSelectedTextView(btnCompleted, btnActive)
-                    viewModel.changeSelectAds(false)
+                    navHostFragment.navController.navigate(R.id.navigation_ads_completed)
                 }
+            }
+
+            when (navHostFragment.childFragmentManager.fragments[0]) {
+                is AdsCompletedFragment -> changeSelectedTextView(btnCompleted, btnActive)
+                else -> changeSelectedTextView(btnActive, btnCompleted)
             }
         }
 
-        viewModel.ads.subscribe { list ->
-            adapter.submitList(list)
-        }
     }
 }

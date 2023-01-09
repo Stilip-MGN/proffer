@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fav_navigation.xml"
+    app:startDestination="@id/navigation_ads_active">
+
+    <fragment
+        android:id="@+id/navigation_ads_active"
+        android:name="studio.stilip.proffer.app.fragments.ads.active.AdsActiveFragment"
+        tools:layout="@layout/fragment_ads_active" />
+
+    <fragment
+        android:id="@+id/navigation_ads_completed"
+        android:name="studio.stilip.proffer.app.fragments.ads.completed.AdsCompletedFragment"
+        tools:layout="@layout/fragment_ads_completed" />
+
+</navigation>

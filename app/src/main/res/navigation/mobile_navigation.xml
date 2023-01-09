@@ -71,6 +71,11 @@
         <action
             android:id="@+id/action_navigation_profile_to_edit_profile"
             app:destination="@id/navigation_edit_profile" />
+        <action
+            android:id="@+id/action_navigation_profile_to_ads"
+            app:destination="@id/navigation_ads"
+            app:popUpTo="@id/navigation_profile"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
