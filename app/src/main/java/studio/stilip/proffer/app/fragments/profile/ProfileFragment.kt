@@ -54,6 +54,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     else -> "${profile.countReviews} ${getString(R.string.reviews)}"
                 }
 
+                btnAd.setOnClickListener {
+                    findNavController(view).navigate(
+                        R.id.action_navigation_profile_to_ads
+                    )
+                }
             }
         }
     }
