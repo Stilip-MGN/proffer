@@ -25,4 +25,6 @@ interface AdRepository {
     fun getAdsContainsString(string: String): Single<List<Ad>>
 
     fun getComplitedAdsByUserId(id: Int): Single<List<Ad>>
+
+    fun saveEditAd(ad: Ad): Completable
 }

@@ -8,11 +8,13 @@ import studio.stilip.proffer.databinding.CardMyAdBinding
 import studio.stilip.proffer.domain.entities.Ad
 
 class MyAdsAdapter(
+    private val onItemClicked: (Int) -> Unit,
 ) : ListAdapter<Ad, MyAdViewHolder>(AdDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         MyAdViewHolder(
             CardMyAdBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+            onItemClicked
         )
 
     override fun onBindViewHolder(holder: MyAdViewHolder, position: Int) =

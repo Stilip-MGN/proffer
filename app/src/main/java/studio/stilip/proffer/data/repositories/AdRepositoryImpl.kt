@@ -85,4 +85,10 @@ class AdRepositoryImpl @Inject constructor() : AdRepository {
 
     override fun getComplitedAdsByUserId(id: Int): Single<List<Ad>> =
         Single.just(complAds.filter { ad -> ad.idSeller == id }.map { adApi -> adApi.toDomain() })
+
+    override fun saveEditAd(ad: Ad): Completable {
+        ads.removeIf { adFromList -> ad.id == adFromList.id }
+        ads.add(ad.toData())
+        return Completable.complete()
+    }
 }
