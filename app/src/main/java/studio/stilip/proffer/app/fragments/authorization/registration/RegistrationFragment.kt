@@ -2,6 +2,7 @@ package studio.stilip.proffer.app.fragments.authorization.registration
 
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -49,6 +50,16 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             }
 
             btnContinue.setOnClickListener {
+
+                if (isEditTextEmpty(editUserLogin)
+                    or isEditTextEmpty(editUserName)
+                    or isEditTextEmpty(editUserPassword)
+                ) {
+                    Toast.makeText(activity, getString(R.string.fill_all_field), Toast.LENGTH_SHORT)
+                        .show()
+                    return@setOnClickListener
+                }
+
                 //TODO получение свободного id
                 val id = 1
                 val login = editUserLogin.text.toString()
@@ -60,4 +71,6 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             }
         }
     }
+
+    private fun isEditTextEmpty(editText: EditText) = editText.text.isEmpty()
 }

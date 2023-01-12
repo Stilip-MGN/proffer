@@ -103,4 +103,6 @@
     <string name="saved">Сохранено</string>
     <string name="btn_active">Активные</string>
     <string name="btn_completed">Завершенные</string>
+    <string name="user_registered">Пользователь зарегистрирован</string>
+    <string name="user_with_this_login_already_exists">Пользователь с таким логином уже существует</string>
 </resources>
