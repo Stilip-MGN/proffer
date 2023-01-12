@@ -63,6 +63,7 @@ class CategorySparesCarFragment : Fragment(R.layout.fragment_category_spares_car
 
                 val name = editName.text.toString()
                 val price = editPrice.text.toString().toInt()
+                val phone = editPhone.text.toString()
                 val description = editDescription.text.toString()
                 val address = editLocation.text.toString()
                 val idSeller = hostViewModel.currentUser.value!!.id
@@ -74,6 +75,7 @@ class CategorySparesCarFragment : Fragment(R.layout.fragment_category_spares_car
                         "",
                         name,
                         price,
+                        phone,
                         description,
                         "",
                         isSell,

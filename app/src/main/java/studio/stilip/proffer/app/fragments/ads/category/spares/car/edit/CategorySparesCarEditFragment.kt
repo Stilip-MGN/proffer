@@ -48,6 +48,7 @@ class CategorySparesCarEditFragment : Fragment(R.layout.fragment_category_spares
                 editPrice.setText(ad.price.toString())
                 editDescription.setText(ad.description)
                 editLocation.setText(ad.address)
+                editPhone.setText(ad.phone)
                 categories = ad.categories
                 id = ad.id
                 rSell.isChecked = ad.isSell
@@ -77,6 +78,7 @@ class CategorySparesCarEditFragment : Fragment(R.layout.fragment_category_spares
 
                 val name = editName.text.toString()
                 val price = editPrice.text.toString().toInt()
+                val phone = editPhone.text.toString()
                 val description = editDescription.text.toString()
                 val address = editLocation.text.toString()
                 val idSeller = hostViewModel.currentUser.value!!.id
@@ -87,6 +89,7 @@ class CategorySparesCarEditFragment : Fragment(R.layout.fragment_category_spares
                         "",
                         name,
                         price,
+                        phone,
                         description,
                         "",
                         isSell,
