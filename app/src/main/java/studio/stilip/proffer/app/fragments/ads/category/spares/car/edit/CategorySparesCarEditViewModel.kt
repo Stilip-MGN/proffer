@@ -9,6 +9,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 import studio.stilip.proffer.app.fragments.ads.active.AdsActiveFragment.Companion.ID_AD
 import studio.stilip.proffer.domain.entities.Ad
+import studio.stilip.proffer.domain.usecase.ad.DeleteAdByIdUseCase
 import studio.stilip.proffer.domain.usecase.ad.SaveEditAdUseCase
 import studio.stilip.proffer.domain.usecase.search.GetAdByIdUseCase
 import javax.inject.Inject
@@ -17,6 +18,7 @@ import javax.inject.Inject
 class CategorySparesCarEditViewModel @Inject constructor(
     private val saveEditAd: SaveEditAdUseCase,
     private val getAd: GetAdByIdUseCase,
+    private val deleteAdById: DeleteAdByIdUseCase,
     stateHandle: SavedStateHandle
 ) : ViewModel() {
     private val adId: Int = stateHandle[ID_AD]!!
@@ -26,6 +28,7 @@ class CategorySparesCarEditViewModel @Inject constructor(
     }
     val imagesUri = BehaviorSubject.create<List<Uri>>()
     val successSaveAd = BehaviorSubject.create<Boolean>()
+    val successDeleteAd = BehaviorSubject.create<Boolean>()
 
     private fun loadAd() {
         getAd(adId)
@@ -55,6 +58,17 @@ class CategorySparesCarEditViewModel @Inject constructor(
                 successSaveAd.onNext(true)
             }, {
                 successSaveAd.onNext(false)
+            })
+    }
+
+    fun deleteAd(){
+        deleteAdById(adId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                successDeleteAd.onNext(true)
+            }, {
+                successDeleteAd.onNext(false)
             })
     }
 }

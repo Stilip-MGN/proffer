@@ -27,4 +27,6 @@ interface AdRepository {
     fun getComplitedAdsByUserId(id: Int): Single<List<Ad>>
 
     fun saveEditAd(ad: Ad): Completable
+
+    fun deleteAdById(id: Int): Completable
 }

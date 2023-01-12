@@ -91,4 +91,10 @@ class AdRepositoryImpl @Inject constructor() : AdRepository {
         ads.add(ad.toData())
         return Completable.complete()
     }
+
+    override fun deleteAdById(id: Int): Completable {
+        ads.removeIf { ad -> id == ad.id }
+        fav.removeIf { ad -> id == ad.id_ad }
+        return Completable.complete()
+    }
 }

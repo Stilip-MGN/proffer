@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.HostViewModel
 import studio.stilip.proffer.app.fragments.ads.category.spares.car.PhotosAdapter
-import studio.stilip.proffer.databinding.FragmentCategorySparesCarBinding
+import studio.stilip.proffer.databinding.FragmentCategorySparesCarEditBinding
 import studio.stilip.proffer.domain.entities.Ad
 
 @AndroidEntryPoint
@@ -33,7 +33,7 @@ class CategorySparesCarEditFragment : Fragment(R.layout.fragment_category_spares
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentCategorySparesCarBinding.bind(view)
+        val binding = FragmentCategorySparesCarEditBinding.bind(view)
 
         hostViewModel.setBottomBarVisible(false)
 
@@ -98,6 +98,10 @@ class CategorySparesCarEditFragment : Fragment(R.layout.fragment_category_spares
                 Toast.makeText(activity, getString(R.string.wait), Toast.LENGTH_SHORT).show()
             }
 
+            btnDelete.setOnClickListener {
+                viewModel.deleteAd()
+            }
+
             viewModel.successSaveAd.subscribe { isSave ->
                 if (isSave) {
                     Toast.makeText(activity, getString(R.string.ad_saved), Toast.LENGTH_LONG).show()
@@ -106,6 +110,18 @@ class CategorySparesCarEditFragment : Fragment(R.layout.fragment_category_spares
                     )
                 } else {
                     Toast.makeText(activity, getString(R.string.save_ad_error), Toast.LENGTH_LONG)
+                        .show()
+                }
+            }
+
+            viewModel.successDeleteAd.subscribe { isDelete ->
+                if (isDelete) {
+                    Toast.makeText(activity, getString(R.string.ad_deleted), Toast.LENGTH_LONG).show()
+                    findNavController(view).navigate(
+                        R.id.action_navigation_edit_ad_to_ads
+                    )
+                } else {
+                    Toast.makeText(activity, getString(R.string.delete_ad_error), Toast.LENGTH_LONG)
                         .show()
                 }
             }
