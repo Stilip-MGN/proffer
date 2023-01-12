@@ -5,10 +5,12 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.HostViewModel
 import studio.stilip.proffer.app.fragments.ads.MyAdsAdapter
+import studio.stilip.proffer.app.fragments.product.ProductFragment
 import studio.stilip.proffer.databinding.FragmentAdsCompletedBinding
 
 @AndroidEntryPoint
@@ -26,7 +28,12 @@ class AdsCompletedFragment : Fragment(R.layout.fragment_ads_completed) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentAdsCompletedBinding.bind(view)
 
-        val adapter = MyAdsAdapter()
+        val adapter = MyAdsAdapter { id ->
+            val args = Bundle().apply {
+                putInt(ProductFragment.ID_AD, id)
+            }
+            //TODO клик завершенные объявления
+        }
 
         with(binding) {
             recMyAds.adapter = adapter

@@ -72,6 +72,8 @@
     <string name="no_more_then_10">Не более 10</string>
     <string name="save_ad_error">Не удалось сохранить объявление, повторите попытку позжу</string>
     <string name="ad_saved">Объявление сохранено</string>
+    <string name="delete_ad_error">Не удалось удалить объявление, повторите попытку позжу</string>
+    <string name="ad_deleted">Объявление удалено</string>
     <string name="wait">Подождите…</string>
     <string name="fill_all_field">Заполните все поля</string>
     <string name="rub">₽</string>

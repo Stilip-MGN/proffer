@@ -1,4 +1,4 @@
-package studio.stilip.proffer.app.fragments.ads.category.spares.car
+package studio.stilip.proffer.app.fragments.ads.category.spares.car.edit
 
 import android.os.Bundle
 import android.view.View
@@ -12,14 +12,15 @@ import androidx.navigation.Navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.HostViewModel
-import studio.stilip.proffer.databinding.FragmentCategorySparesCarBinding
+import studio.stilip.proffer.app.fragments.ads.category.spares.car.PhotosAdapter
+import studio.stilip.proffer.databinding.FragmentCategorySparesCarEditBinding
 import studio.stilip.proffer.domain.entities.Ad
 
 @AndroidEntryPoint
-class CategorySparesCarFragment : Fragment(R.layout.fragment_category_spares_car) {
+class CategorySparesCarEditFragment : Fragment(R.layout.fragment_category_spares_car_edit) {
 
     private val hostViewModel: HostViewModel by activityViewModels()
-    private val viewModel: CategorySparesCarViewModel by viewModels()
+    private val viewModel: CategorySparesCarEditViewModel by viewModels()
 
     private val adapter = PhotosAdapter { uri ->
         viewModel.deleteImage(uri)
@@ -32,13 +33,27 @@ class CategorySparesCarFragment : Fragment(R.layout.fragment_category_spares_car
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentCategorySparesCarBinding.bind(view)
+        val binding = FragmentCategorySparesCarEditBinding.bind(view)
 
         hostViewModel.setBottomBarVisible(false)
 
         with(binding) {
 
             recPhotos.adapter = adapter
+            var id = 0
+            var categories = emptyList<String>()
+
+            viewModel.editAd.subscribe({ ad ->
+                editName.setText(ad.name)
+                editPrice.setText(ad.price.toString())
+                editDescription.setText(ad.description)
+                editLocation.setText(ad.address)
+                editPhone.setText(ad.phone)
+                categories = ad.categories
+                id = ad.id
+                rSell.isChecked = ad.isSell
+                rBuy.isChecked = ad.isSell.not()
+            }, {})
 
             btnAddPhoto.setOnClickListener {
                 getContent.launch("image/*")
@@ -67,11 +82,10 @@ class CategorySparesCarFragment : Fragment(R.layout.fragment_category_spares_car
                 val description = editDescription.text.toString()
                 val address = editLocation.text.toString()
                 val idSeller = hostViewModel.currentUser.value!!.id
-                val categories = arguments!!.getStringArrayList(LIST_CATEGORIES)!!
                 val isSell = rSell.isChecked
                 viewModel.saveAd(
                     Ad(
-                        12,
+                        id,
                         "",
                         name,
                         price,
@@ -87,14 +101,30 @@ class CategorySparesCarFragment : Fragment(R.layout.fragment_category_spares_car
                 Toast.makeText(activity, getString(R.string.wait), Toast.LENGTH_SHORT).show()
             }
 
+            btnDelete.setOnClickListener {
+                viewModel.deleteAd()
+            }
+
             viewModel.successSaveAd.subscribe { isSave ->
                 if (isSave) {
                     Toast.makeText(activity, getString(R.string.ad_saved), Toast.LENGTH_LONG).show()
                     findNavController(view).navigate(
-                        R.id.action_navigation_category_spares_car_to_navigation_ads
+                        R.id.action_navigation_edit_ad_to_ads
                     )
                 } else {
                     Toast.makeText(activity, getString(R.string.save_ad_error), Toast.LENGTH_LONG)
+                        .show()
+                }
+            }
+
+            viewModel.successDeleteAd.subscribe { isDelete ->
+                if (isDelete) {
+                    Toast.makeText(activity, getString(R.string.ad_deleted), Toast.LENGTH_LONG).show()
+                    findNavController(view).navigate(
+                        R.id.action_navigation_edit_ad_to_ads
+                    )
+                } else {
+                    Toast.makeText(activity, getString(R.string.delete_ad_error), Toast.LENGTH_LONG)
                         .show()
                 }
             }
@@ -106,8 +136,4 @@ class CategorySparesCarFragment : Fragment(R.layout.fragment_category_spares_car
     }
 
     private fun isEditTextEmpty(editText: EditText) = editText.text.isEmpty()
-
-    companion object {
-        const val LIST_CATEGORIES = "list_categories"
-    }
 }
