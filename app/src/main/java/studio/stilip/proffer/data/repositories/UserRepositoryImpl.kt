@@ -1,6 +1,7 @@
 package studio.stilip.proffer.data.repositories
 
 import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Single
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.ResourcesProvider
 import studio.stilip.proffer.domain.entities.User
@@ -13,10 +14,14 @@ class UserRepositoryImpl @Inject constructor(
     private val resourcesProvider: ResourcesProvider,
 ) : UserRepository {
 
-    val users = mutableListOf(User(2, "", "", "", "", "", ""))
+    val users = mutableListOf(User(1, "admin", "Иван Иванович", "", "", "", "admin"))
 
-    override fun authentication(login: String, password: String): Completable {
-        TODO("Not yet implemented")
+    override fun authentication(login: String, password: String): Single<User> {
+        val result = users.firstOrNull { user -> user.login == login && user.password == password }
+        return if (result != null)
+            Single.just(result)
+        else
+            Single.error(Throwable(resourcesProvider.getString(R.string.invalid_login_or_password)))
     }
 
     override fun registerUser(user: User): Completable {

@@ -105,4 +105,6 @@
     <string name="btn_completed">Завершенные</string>
     <string name="user_registered">Пользователь зарегистрирован</string>
     <string name="user_with_this_login_already_exists">Пользователь с таким логином уже существует</string>
+    <string name="invalid_login_or_password">Неверный логин или пароль</string>
+    <string name="you_sign_in">Вы вошли в аккаунт</string>
 </resources>

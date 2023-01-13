@@ -61,7 +61,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                 }
 
                 //TODO получение свободного id
-                val id = 1
+                val id = 5
                 val login = editUserLogin.text.toString()
                 val name = editUserName.text.toString()
                 val password = editUserPassword.text.toString()
