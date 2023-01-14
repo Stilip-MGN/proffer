@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_sign_in"
-        android:name="studio.stilip.proffer.app.fragments.authorization.SignInFragment"
+        android:name="studio.stilip.proffer.app.fragments.authorization.sign.SignInFragment"
         tools:layout="@layout/fragment_sign_in">
         <action
             android:id="@+id/action_navigation_sign_in_to_navigation_registration"
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/navigation_registration"
-        android:name="studio.stilip.proffer.app.fragments.authorization.RegistrationFragment"
+        android:name="studio.stilip.proffer.app.fragments.authorization.registration.RegistrationFragment"
         tools:layout="@layout/fragment_registration">
         <action
             android:id="@+id/action_navigation_registration_to_navigation_sign_in"

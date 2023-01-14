@@ -65,12 +65,13 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile) {
 
             btnSave.setOnClickListener {
                 val id = user.id
+                val login = hostViewModel.currentUser.value!!.login
                 val name = editUserName.text.toString()
                 val city = editUserCity.text.toString()
                 val phone = editUserPhone.text.toString()
                 val mail = editUserMail.text.toString()
                 val password = editUserPassword.text.toString()
-                hostViewModel.changeData(User(id, name, city, phone, mail, password))
+                hostViewModel.changeData(User(id, login, name, city, phone, mail, password))
             }
         }
     }
