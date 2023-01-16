@@ -102,6 +102,12 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
                     in 2..4 -> "${seller.countReviews} ${getString(R.string.reviews_2_4)}"
                     else -> "${seller.countReviews} ${getString(R.string.reviews)}"
                 }
+
+                Glide.with(this@ProductFragment)
+                    .load(seller.photo)
+                    .centerCrop()
+                    .error(R.drawable.ic_person_24)
+                    .into(sellerPhoto)
             }
         }
 
