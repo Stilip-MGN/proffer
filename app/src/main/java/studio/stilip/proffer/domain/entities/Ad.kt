@@ -2,7 +2,7 @@ package studio.stilip.proffer.domain.entities
 
 data class Ad(
     val id: Int,
-    val photo: String,
+    val photos: List<String>,
     val name: String,
     val price: Int,
     val phone: String,

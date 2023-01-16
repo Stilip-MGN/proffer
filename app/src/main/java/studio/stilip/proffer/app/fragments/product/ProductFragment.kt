@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.HostViewModel
@@ -22,6 +23,8 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentProductBinding.bind(view)
+
+        hostViewModel.setBottomBarVisible(false)
 
         val adAdapter = AdListAdapter({ id ->
             val args = Bundle().apply {
@@ -60,6 +63,32 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
                         )
                     )
                 }
+
+                var iterator = 0
+
+                fun updateImageSw() {
+                    Glide.with(this@ProductFragment)
+                        .load(ad.photos[iterator])
+                        .centerCrop()
+                        .error(R.drawable.ic_do_not_disturb_24)
+                        .into(imgSw)
+                }
+
+                btnImageLeft.setOnClickListener {
+                    if (iterator > 0) {
+                        iterator--
+                        updateImageSw()
+                    }
+                }
+
+                btnImageRight.setOnClickListener {
+                    if (iterator < ad.photos.size - 1) {
+                        iterator++
+                        updateImageSw()
+                    }
+                }
+                if (ad.photos.isNotEmpty())
+                    updateImageSw()
             }
         }
 
@@ -91,11 +120,6 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
 
             recSimilar.adapter = adAdapter
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        hostViewModel.setBottomBarVisible(false)
     }
 
     override fun onResume() {

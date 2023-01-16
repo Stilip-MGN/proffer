@@ -2,7 +2,7 @@ package studio.stilip.proffer.data.entities
 
 data class AdEntityForApi(
     val id: Int,
-    val photo: String,
+    val photos: List<String>,
     val name: String,
     val price: Int,
     val phone: String,

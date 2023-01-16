@@ -72,7 +72,7 @@ class CategorySparesCarFragment : Fragment(R.layout.fragment_category_spares_car
                 viewModel.saveAd(
                     Ad(
                         12,
-                        "",
+                        emptyList(),
                         name,
                         price,
                         phone,

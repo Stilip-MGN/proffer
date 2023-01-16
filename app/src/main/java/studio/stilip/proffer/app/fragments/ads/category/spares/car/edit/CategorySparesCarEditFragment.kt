@@ -86,7 +86,7 @@ class CategorySparesCarEditFragment : Fragment(R.layout.fragment_category_spares
                 viewModel.saveAd(
                     Ad(
                         id,
-                        "",
+                        emptyList(),
                         name,
                         price,
                         phone,
@@ -119,7 +119,8 @@ class CategorySparesCarEditFragment : Fragment(R.layout.fragment_category_spares
 
             viewModel.successDeleteAd.subscribe { isDelete ->
                 if (isDelete) {
-                    Toast.makeText(activity, getString(R.string.ad_deleted), Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, getString(R.string.ad_deleted), Toast.LENGTH_LONG)
+                        .show()
                     findNavController(view).navigate(
                         R.id.action_navigation_edit_ad_to_ads
                     )
