@@ -3,6 +3,7 @@ package studio.stilip.proffer.app.fragments.search
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import studio.stilip.proffer.R
 import studio.stilip.proffer.databinding.CardProductBinding
 import studio.stilip.proffer.domain.entities.Ad
@@ -26,6 +27,12 @@ class AdListViewHolder(
 
         price.text = ad.price.toString()
         name.text = ad.name
+
+        Glide.with(this.photo)
+            .load(ad.photos.firstOrNull() ?: "")
+            .centerCrop()
+            .error(R.drawable.ic_do_not_disturb_24)
+            .into(photo)
 
         fun changeBtnFavorite() {
             if (ad.isFavorite) {
