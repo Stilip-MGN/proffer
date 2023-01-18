@@ -46,7 +46,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageSwitcher
+        <ImageView
             android:id="@+id/img_sw"
             android:layout_width="match_parent"
             android:layout_height="275dp"

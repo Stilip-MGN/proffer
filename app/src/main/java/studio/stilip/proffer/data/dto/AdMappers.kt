@@ -6,7 +6,7 @@ import studio.stilip.proffer.domain.entities.Ad
 fun AdEntityForApi.toDomain(): Ad =
     Ad(
         id = this.id,
-        photo = this.photo,
+        photos = this.photos,
         name = this.name,
         price = this.price,
         phone = this.phone,
@@ -21,7 +21,7 @@ fun AdEntityForApi.toDomain(): Ad =
 fun Ad.toData(): AdEntityForApi =
     AdEntityForApi(
         id = this.id,
-        photo = this.photo,
+        photos = this.photos,
         name = this.name,
         price = this.price,
         phone = this.phone,
