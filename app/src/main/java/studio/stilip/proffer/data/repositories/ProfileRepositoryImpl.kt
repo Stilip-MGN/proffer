@@ -1,6 +1,6 @@
 package studio.stilip.proffer.data.repositories
 
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Single
 import studio.stilip.proffer.domain.entities.Profile
 import studio.stilip.proffer.domain.repository_interface.ProfileRepository
 import javax.inject.Inject

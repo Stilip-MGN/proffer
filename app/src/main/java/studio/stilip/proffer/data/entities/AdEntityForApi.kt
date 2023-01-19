@@ -1,5 +1,8 @@
 package studio.stilip.proffer.data.entities
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class AdEntityForApi(
     val id: Int,
     val photos: List<String>,

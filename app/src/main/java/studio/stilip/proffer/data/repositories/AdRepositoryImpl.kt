@@ -1,7 +1,8 @@
 package studio.stilip.proffer.data.repositories
 
-import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Completable
+import io.reactivex.Single
+import studio.stilip.proffer.data.api.RetrofitServiceAd
 import studio.stilip.proffer.data.dto.toData
 import studio.stilip.proffer.data.dto.toDomain
 import studio.stilip.proffer.data.entities.AdEntityForApi
@@ -12,7 +13,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AdRepositoryImpl @Inject constructor() : AdRepository {
+class AdRepositoryImpl @Inject constructor(
+    private val retrofitService: RetrofitServiceAd,
+) : AdRepository {
 
     //хардкод
     val ads = mutableListOf(
@@ -47,6 +50,7 @@ class AdRepositoryImpl @Inject constructor() : AdRepository {
     )
 
     override fun getRecommendedAds(): Single<List<Ad>> =
+        //retrofitService.getPosts().map { list -> list.map { adApi -> adApi.toDomain() } }
         Single.just(ads.map { adApi ->
             adApi.toDomain()
                 .also { ad -> ad.isFavorite = fav.any { favTable -> favTable.id_ad == ad.id } }

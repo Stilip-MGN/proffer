@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation.findNavController
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.disposables.Disposable
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.HostViewModel
 import studio.stilip.proffer.databinding.FragmentEditProfileBinding

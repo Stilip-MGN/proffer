@@ -1,7 +1,7 @@
 package studio.stilip.proffer.data.repositories
 
-import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Completable
+import io.reactivex.Single
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.ResourcesProvider
 import studio.stilip.proffer.domain.entities.User
