@@ -18,18 +18,17 @@ class RegistrationViewModel @Inject constructor(
 ) : ViewModel() {
 
     val message = PublishSubject.create<String>()
-    val successRegistration = PublishSubject.create<Boolean>()
+    val user = PublishSubject.create<User>()
 
-    fun registration(user: User) {
-        registrationUser(user)
+    fun registration(login: String, password: String, email: String) {
+        registrationUser(login, password, email)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
+            .subscribe({ u ->
+                user.onNext(u)
                 message.onNext(resourcesProvider.getString(R.string.user_registered))
-                successRegistration.onNext(true)
             }, {
-                message.onNext(it.message ?: "Ошибка")
-                successRegistration.onNext(false)
+                message.onNext(resourcesProvider.getString(R.string.user_with_this_login_already_exists))
             })
     }
 

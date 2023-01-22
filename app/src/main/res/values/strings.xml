@@ -107,4 +107,5 @@
     <string name="user_with_this_login_already_exists">Пользователь с таким логином уже существует</string>
     <string name="invalid_login_or_password">Неверный логин или пароль</string>
     <string name="you_sign_in">Вы вошли в аккаунт</string>
+    <string name="error_password_is_not_valid">Пароль должен содержит цифры, заглавные и строчные буквы; от 8 символов</string>
 </resources>

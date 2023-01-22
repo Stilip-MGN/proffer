@@ -6,6 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import studio.stilip.proffer.data.entities.AdEntityForApi
 import studio.stilip.proffer.data.entities.UserApi
+import studio.stilip.proffer.data.entities.UserApiForRegister
 import studio.stilip.proffer.domain.entities.User
 
 interface RetrofitServiceAd {
@@ -17,4 +18,7 @@ interface RetrofitServiceAd {
 
     @POST("/api/login/")
     fun getLogin(@Body review: UserApi): Single<User>
+
+    @POST("/api/createuser/")
+    fun registerUser(@Body review: UserApiForRegister): Single<User>
 }

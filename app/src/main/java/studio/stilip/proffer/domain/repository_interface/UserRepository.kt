@@ -8,7 +8,7 @@ interface UserRepository {
 
     fun authentication(login: String, password: String): Single<User>
 
-    fun registerUser(user: User): Completable
+    fun registerUser(login: String, password: String, email: String): Single<User>
 
     fun changeDataUser(user: User): Completable
 }
