@@ -1,11 +1,12 @@
 package studio.stilip.proffer.data.api
 
-import io.reactivex.Completable
 import io.reactivex.Single
+import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.POST
 import studio.stilip.proffer.data.entities.AdEntityForApi
-import studio.stilip.proffer.domain.entities.Ad
+import studio.stilip.proffer.data.entities.UserApi
+import studio.stilip.proffer.domain.entities.User
 
 interface RetrofitServiceAd {
     @GET("/api/posts/")
@@ -13,4 +14,7 @@ interface RetrofitServiceAd {
 
     @GET("/api/userimages/")
     fun getUserImages(): Single<List<String>>
+
+    @POST("/api/login/")
+    fun getLogin(@Body review: UserApi): Single<User>
 }

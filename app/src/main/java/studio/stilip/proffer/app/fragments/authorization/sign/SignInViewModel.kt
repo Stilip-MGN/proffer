@@ -28,7 +28,7 @@ class SignInViewModel @Inject constructor(
                 user.onNext(u)
                 message.onNext(resourcesProvider.getString(R.string.you_sign_in))
             }, {
-                message.onNext(it.message ?: "Ошибка")
+                message.onNext(resourcesProvider.getString(R.string.invalid_login_or_password))
             })
     }
 

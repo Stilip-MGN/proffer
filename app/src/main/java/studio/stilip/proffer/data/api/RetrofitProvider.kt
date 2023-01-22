@@ -1,5 +1,8 @@
 package studio.stilip.proffer.data.api
 
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,7 +19,9 @@ class RetrofitProvider @Inject constructor() {
     val retrofitServiceAd: RetrofitServiceAd = Retrofit.Builder()
         .baseUrl(BuildConfig.API_BASE_URL)
         .client(httpClient)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(Json {
+            ignoreUnknownKeys = true
+        }.asConverterFactory("application/json".toMediaType()))
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
         .create(RetrofitServiceAd::class.java)

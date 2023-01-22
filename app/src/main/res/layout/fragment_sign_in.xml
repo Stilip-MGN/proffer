@@ -89,7 +89,7 @@
                     android:autofillHints="emailAddress"
                     android:background="@drawable/tools_shape"
                     android:hint="@string/password"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPassword"
                     android:lines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>

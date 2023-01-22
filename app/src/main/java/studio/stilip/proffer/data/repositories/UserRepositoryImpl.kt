@@ -4,6 +4,8 @@ import io.reactivex.Completable
 import io.reactivex.Single
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.ResourcesProvider
+import studio.stilip.proffer.data.api.RetrofitServiceAd
+import studio.stilip.proffer.data.entities.UserApi
 import studio.stilip.proffer.domain.entities.User
 import studio.stilip.proffer.domain.repository_interface.UserRepository
 import javax.inject.Inject
@@ -12,17 +14,13 @@ import javax.inject.Singleton
 @Singleton
 class UserRepositoryImpl @Inject constructor(
     private val resourcesProvider: ResourcesProvider,
+    private val retrofitService: RetrofitServiceAd,
 ) : UserRepository {
 
     val users = mutableListOf(User(1, "admin", "Иван Иванович", "", "", "", "admin"))
 
-    override fun authentication(login: String, password: String): Single<User> {
-        val result = users.firstOrNull { user -> user.login == login && user.password == password }
-        return if (result != null)
-            Single.just(result)
-        else
-            Single.error(Throwable(resourcesProvider.getString(R.string.invalid_login_or_password)))
-    }
+    override fun authentication(login: String, password: String): Single<User> =
+        retrofitService.getLogin(UserApi(login, password))
 
     override fun registerUser(user: User): Completable {
         if (users.any { u -> u.login == user.login })
