@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class UserApi(
+data class UserApiForLogin(
 
     @SerialName("username")
     val login: String,

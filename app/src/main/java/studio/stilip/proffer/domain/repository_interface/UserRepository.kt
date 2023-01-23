@@ -11,4 +11,8 @@ interface UserRepository {
     fun registerUser(login: String, password: String, email: String): Single<User>
 
     fun changeDataUser(user: User): Completable
+
+    fun saveUserInDB(user: User): Completable
+
+    fun getUserFromDB(): Single<User>
 }

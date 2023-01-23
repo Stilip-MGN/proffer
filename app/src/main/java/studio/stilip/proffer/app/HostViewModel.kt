@@ -8,11 +8,13 @@ import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
 import studio.stilip.proffer.domain.entities.User
 import studio.stilip.proffer.domain.usecase.user.ChangeDataUserUseCase
+import studio.stilip.proffer.domain.usecase.user.SaveUserDBUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class HostViewModel @Inject constructor(
-    private val changeDataUser: ChangeDataUserUseCase
+    private val changeDataUser: ChangeDataUserUseCase,
+    private val saveUserDB: SaveUserDBUseCase
 ) : ViewModel() {
 
     val bottomBarVisible = BehaviorSubject.create<Boolean>()
@@ -25,6 +27,7 @@ class HostViewModel @Inject constructor(
 
     fun setCurrentUser(user: User) {
         currentUser.onNext(user)
+        saveUser(user)
     }
 
     fun changeData(user: User) {
@@ -36,6 +39,18 @@ class HostViewModel @Inject constructor(
                 isDataChanged.onNext(true)
             }, {
                 isDataChanged.onNext(false)
+            })
+    }
+
+    private fun saveUser(user: User){
+        saveUserDB(user)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                //TODO удалить позже
+                println("Пользователь сохранён")
+            }, {
+                println(it.message)
             })
     }
 }

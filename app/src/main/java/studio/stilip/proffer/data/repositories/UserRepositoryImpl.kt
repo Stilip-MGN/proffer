@@ -4,7 +4,10 @@ import io.reactivex.Completable
 import io.reactivex.Single
 import studio.stilip.proffer.app.ResourcesProvider
 import studio.stilip.proffer.data.api.RetrofitServiceAd
-import studio.stilip.proffer.data.entities.UserApi
+import studio.stilip.proffer.data.dao.UserDBDao
+import studio.stilip.proffer.data.dto.toDB
+import studio.stilip.proffer.data.dto.toDomain
+import studio.stilip.proffer.data.entities.UserApiForLogin
 import studio.stilip.proffer.data.entities.UserApiForRegister
 import studio.stilip.proffer.domain.entities.User
 import studio.stilip.proffer.domain.repository_interface.UserRepository
@@ -15,12 +18,13 @@ import javax.inject.Singleton
 class UserRepositoryImpl @Inject constructor(
     private val resourcesProvider: ResourcesProvider,
     private val retrofitService: RetrofitServiceAd,
+    private val userDBDao: UserDBDao
 ) : UserRepository {
 
     val users = mutableListOf(User(1, "admin", "Иван Иванович", "", "", "", "admin"))
 
     override fun authentication(login: String, password: String): Single<User> =
-        retrofitService.getLogin(UserApi(login, password))
+        retrofitService.getLogin(UserApiForLogin(login, password))
 
     override fun registerUser(login: String, password: String, email: String): Single<User> =
         retrofitService.registerUser(UserApiForRegister(login, password, email))
@@ -32,6 +36,14 @@ class UserRepositoryImpl @Inject constructor(
         users.removeIf { u -> u.id == user.id }
         users.add(user)
         return Completable.complete()
+    }
+
+    override fun saveUserInDB(user: User): Completable {
+        return userDBDao.insertUser(user.toDB())
+    }
+
+    override fun getUserFromDB(): Single<User> {
+        return Single.just(userDBDao.getUsers().first().toDomain())
     }
 
 }

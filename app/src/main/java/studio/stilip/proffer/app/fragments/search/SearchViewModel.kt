@@ -6,9 +6,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
 import studio.stilip.proffer.domain.entities.Ad
+import studio.stilip.proffer.domain.entities.User
 import studio.stilip.proffer.domain.usecase.search.AddAdToFavoriteByIdUseCase
 import studio.stilip.proffer.domain.usecase.search.GetRecommendedAdsUseCase
 import studio.stilip.proffer.domain.usecase.search.RemoveAdFromFavoriteByIdUseCase
+import studio.stilip.proffer.domain.usecase.user.GetUserDBUseCase
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,9 +27,9 @@ class SearchViewModel @Inject constructor(
         getRecommendedAds(userId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe( { list ->
+            .subscribe({ list ->
                 ads.onNext(list)
-            },{})
+            }, {})
     }
 
     fun changeFavoriteStatusById(id_product: Int) {
