@@ -77,7 +77,7 @@ class CategorySparesCarEditFragment : Fragment(R.layout.fragment_category_spares
                 }
 
                 val name = editName.text.toString()
-                val price = editPrice.text.toString().toInt()
+                val price = editPrice.text.toString().toDouble()
                 val phone = editPhone.text.toString()
                 val description = editDescription.text.toString()
                 val address = editLocation.text.toString()

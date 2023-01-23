@@ -6,7 +6,7 @@ import studio.stilip.proffer.domain.entities.Ad
 
 interface AdRepository {
 
-    fun getRecommendedAds(): Single<List<Ad>>
+    fun getRecommendedAds(userId: Int): Single<List<Ad>>
 
     fun getFavoritesAds(): Single<List<Ad>>
 

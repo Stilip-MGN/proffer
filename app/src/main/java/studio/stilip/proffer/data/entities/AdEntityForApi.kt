@@ -7,7 +7,7 @@ data class AdEntityForApi(
     val id: Int,
     val photos: List<String>,
     val name: String,
-    val price: Int,
+    val price: Double,
     val phone: String,
     val description: String,
     val characteristics: String,

@@ -24,23 +24,23 @@ class AdRepositoryImpl @Inject constructor(
             "https://picsum.photos/301",
             "https://picsum.photos/302",
             "https://picsum.photos/303",
-        ), "Кружка", 100,"88007000628","Большая и с картинкой", "Металлическая", true,"Екатеринбург, Толмачева 9", listOf(),3),
+        ), "Кружка", 100.0,"88007000628","Большая и с картинкой", "Металлическая", true,"Екатеринбург, Толмачева 9", listOf(),3),
         AdEntityForApi(2, listOf(
             "https://picsum.photos/420",
             "https://picsum.photos/421",
-        ), "Шины", 30000, "88007000628","Зимние", "Нагрузка до 100 кг", true,"Екатеринбург, Толмачева 9", listOf("Шины, диски и колёса","Для автомобиля"),1),
+        ), "Шины", 30000.0, "88007000628","Зимние", "Нагрузка до 100 кг", true,"Екатеринбург, Толмачева 9", listOf("Шины, диски и колёса","Для автомобиля"),1),
         AdEntityForApi(3, listOf(
             "https://picsum.photos/520",
             "https://picsum.photos/521",
-        ), "Мотор", 90000,"88007000628", "Бензиновый мотор четвертого поколения", "15 л.с.",true, "Екатеринбург, Толмачева 9", listOf("Запчасти","Для автомобиля"),2),
-        AdEntityForApi(4, emptyList(), "Облако", 3400, "88007000628","Белое и воздушное", "100 х 200",false, "Екатеринбург, Толмачева 9",listOf(), 1),
-        AdEntityForApi(5, emptyList(), "Укроп", 1100,"88007000628", "Свежий и душистый", "10 кг.",true, "Екатеринбург, Толмачева 9",listOf(), 3),
-        AdEntityForApi(6, emptyList(), "Тарелка", 190,"88007000628", "Использованная и одноразовая", "Пластик", true,"Екатеринбург, Толмачева 9", listOf(),2),
+        ), "Мотор", 90000.0,"88007000628", "Бензиновый мотор четвертого поколения", "15 л.с.",true, "Екатеринбург, Толмачева 9", listOf("Запчасти","Для автомобиля"),2),
+        AdEntityForApi(4, emptyList(), "Облако", 3400.0, "88007000628","Белое и воздушное", "100 х 200",false, "Екатеринбург, Толмачева 9",listOf(), 1),
+        AdEntityForApi(5, emptyList(), "Укроп", 1100.0,"88007000628", "Свежий и душистый", "10 кг.",true, "Екатеринбург, Толмачева 9",listOf(), 3),
+        AdEntityForApi(6, emptyList(), "Тарелка", 190.0,"88007000628", "Использованная и одноразовая", "Пластик", true,"Екатеринбург, Толмачева 9", listOf(),2),
     )
 
     val complAds = mutableListOf(
-        AdEntityForApi( 1, emptyList(), "Свеча", 1000,"88007000628","Новая, на запчасти", "Металлическая", true,"Екатеринбург, Толмачева 9", listOf(),1),
-        AdEntityForApi(2, emptyList(), "Шины Bridgestone", 20000, "88007000628","Летние", "Нагрузка до 100 кг", true,"Екатеринбург, Толмачева 9", listOf(),1),
+        AdEntityForApi( 1, emptyList(), "Свеча", 1000.0,"88007000628","Новая, на запчасти", "Металлическая", true,"Екатеринбург, Толмачева 9", listOf(),1),
+        AdEntityForApi(2, emptyList(), "Шины Bridgestone", 20000.0, "88007000628","Летние", "Нагрузка до 100 кг", true,"Екатеринбург, Толмачева 9", listOf(),1),
     )
 
     val fav = mutableListOf(
@@ -49,12 +49,8 @@ class AdRepositoryImpl @Inject constructor(
         AdFavoriteApi(3, 1, 3),
     )
 
-    override fun getRecommendedAds(): Single<List<Ad>> =
-        //retrofitService.getPosts().map { list -> list.map { adApi -> adApi.toDomain() } }
-        Single.just(ads.map { adApi ->
-            adApi.toDomain()
-                .also { ad -> ad.isFavorite = fav.any { favTable -> favTable.id_ad == ad.id } }
-        })
+    override fun getRecommendedAds(userId: Int): Single<List<Ad>> =
+        retrofitService.getRecommendAds(userId.toString())
 
     override fun getFavoritesAds(): Single<List<Ad>> {
         return Single.just(ads.map { adApi ->

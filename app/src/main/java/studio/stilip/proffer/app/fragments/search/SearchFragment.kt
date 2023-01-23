@@ -63,7 +63,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     //TODO исправить
     override fun onResume() {
-        viewModel.getRecommended()
+        val userId = hostViewModel.currentUser.value?.id ?: -1
+        if (userId != -1)
+            viewModel.getRecommended(userId)
         super.onResume()
     }
 }

@@ -18,10 +18,10 @@ class SearchViewModel @Inject constructor(
     private val removeAdFromFavoriteById: RemoveAdFromFavoriteByIdUseCase,
 ) : ViewModel() {
 
-    val ads = BehaviorSubject.create<List<Ad>>().apply { getRecommended() }
+    val ads = BehaviorSubject.create<List<Ad>>()
 
-    fun getRecommended() {
-        getRecommendedAds()
+    fun getRecommended(userId: Int) {
+        getRecommendedAds(userId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe( { list ->

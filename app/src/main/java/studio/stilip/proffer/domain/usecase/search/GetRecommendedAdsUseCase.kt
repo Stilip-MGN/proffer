@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetRecommendedAdsUseCase @Inject constructor(
     private val repository: AdRepository
 ) {
-    operator fun invoke() = repository.getRecommendedAds()
+    operator fun invoke(userId: Int) = repository.getRecommendedAds(userId)
 }
