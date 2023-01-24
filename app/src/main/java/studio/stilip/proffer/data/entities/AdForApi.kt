@@ -11,6 +11,9 @@ data class AdForApi(
     @SerialName("image")
     val photo: String = "",
 
+    @SerialName("modules")
+    val photos: List<PhotoForAdForApi> = emptyList(),
+
     @SerialName("title")
     val name: String = "",
 
@@ -33,4 +36,10 @@ data class AdForApi(
     val category: String = "",
 
     var isFavorite: Boolean = false,
+)
+
+@Serializable
+data class PhotoForAdForApi(
+    @SerialName("video")
+    val photo: String = "",
 )

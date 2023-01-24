@@ -50,7 +50,11 @@ class AdRepositoryImpl @Inject constructor(
     )
 
     override fun getRecommendedAds(userId: Int): Single<List<Ad>> =
-        retrofitService.getRecommendAds(userId.toString())
+        retrofitService.getRecommendAds(userId.toString()).map {
+            it.map { ad ->
+                ad.toDomain()
+            }
+        }
 
     override fun getFavoritesAds(): Single<List<Ad>> {
         return Single.just(ads.map { adApi ->
