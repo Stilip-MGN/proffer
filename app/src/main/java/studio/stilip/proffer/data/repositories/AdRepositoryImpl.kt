@@ -64,7 +64,7 @@ class AdRepositoryImpl @Inject constructor(
     }
 
     override fun getAdById(idAd: Int, idUser: Int): Single<Ad> =
-        retrofitService.getAdById(idUser.toString(), idAd.toString())
+        retrofitService.getAdById(idUser.toString(), idAd.toString()).map { it.first().toDomain() }
 
     override fun addAdToFavoriteById(id: Int): Completable {
         fav.add(AdFavoriteApi(fav.count(), 1, id))

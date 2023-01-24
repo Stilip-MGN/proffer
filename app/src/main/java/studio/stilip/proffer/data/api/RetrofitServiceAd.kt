@@ -23,7 +23,7 @@ interface RetrofitServiceAd {
     fun getRecommendAds(@Path("id") id: String): Single<List<AdForApi>>
 
     @GET("/api/course/user={id_user}/course={id_ad}")
-    fun getAdById(@Path("id_user") id_user: String, @Path("id_ad") id_ad: String): Single<Ad>
+    fun getAdById(@Path("id_user") id_user: String, @Path("id_ad") id_ad: String): Single<List<AdForApi>>
 
     //TODO путь переделать
     @GET("/api/search/{id_user}{string}")
