@@ -26,9 +26,9 @@ interface RetrofitServiceAd {
     fun getAdById(@Path("id_user") id_user: String, @Path("id_ad") id_ad: String): Single<List<AdForApi>>
 
     //TODO путь переделать
-    @GET("/api/search/{id_user}{string}")
+    @GET("/api/search/q={string}/user={id_user}")
     fun getAdsContainsString(
         @Path("id_user") id_user: String,
         @Path("string") string: String
-    ): Single<List<Ad>>
+    ): Single<List<AdForApi>>
 }

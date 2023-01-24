@@ -36,34 +36,40 @@ class SearchFilterViewModel @Inject constructor(
             removeAdFromFavoriteById(id_product)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
+                .subscribe({
                     ads.onNext((ads.value!!.map { el ->
                         if (el.id == id_product) ad.copy(
                             isFavorite = false
                         ) else el
                     }))
-                }
+                }, {
+                    println(it.message)
+                })
         else
             addAdToFavoriteById(id_product)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
+                .subscribe({
                     ads.onNext((ads.value!!.map { el ->
                         if (el.id == id_product) ad.copy(
                             isFavorite = true
                         ) else el
                     }))
-                }
+                }, {
+                    println(it.message)
+                })
     }
 
     fun findAdsContainsString(string: String) {
         getAdsContainsString(string, userId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { list ->
+            .subscribe({ list ->
                 allAds.onNext(list)
                 filterAds()
-            }
+            }, {
+                println(it.message)
+            })
     }
 
     fun filterAds() {
