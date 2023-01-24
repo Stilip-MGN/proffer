@@ -73,6 +73,10 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile) {
                 val password = editUserPassword.text.toString()
                 hostViewModel.changeData(User(id, login, name, city, phone, mail, password))
             }
+
+            btnExit.setOnClickListener {
+                hostViewModel.deleteCurrentUser()
+            }
         }
     }
 

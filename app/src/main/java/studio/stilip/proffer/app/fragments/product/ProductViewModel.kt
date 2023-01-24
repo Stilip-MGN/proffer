@@ -7,6 +7,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
 import studio.stilip.proffer.app.fragments.product.ProductFragment.Companion.ID_AD
+import studio.stilip.proffer.data.UserCacheManager
 import studio.stilip.proffer.domain.entities.Ad
 import studio.stilip.proffer.domain.entities.Seller
 import studio.stilip.proffer.domain.usecase.product.GetSimilarAdsUseCase
@@ -26,6 +27,7 @@ class ProductViewModel @Inject constructor(
     stateHandle: SavedStateHandle
 ) : ViewModel() {
     private val adId: Int = stateHandle[ID_AD]!!
+    var userId: Int = UserCacheManager.getUserId()
     var ad = BehaviorSubject.create<Ad>().apply { loadAd() }
     var seller = BehaviorSubject.create<Seller>()
     val similarAds = BehaviorSubject.create<List<Ad>>()
@@ -34,29 +36,35 @@ class ProductViewModel @Inject constructor(
         getSimilarAds(adId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { list ->
+            .subscribe({ list ->
                 this.similarAds.onNext(list)
-            }
+            }, {
+                println("loadSimilar")
+            })
     }
 
     private fun loadAd() {
-        getAd(adId)
+        getAd(adId, userId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { ad ->
+            .subscribe({ ad ->
                 this.ad.onNext(ad)
                 loadProfile(ad.idSeller)
                 loadSimilar()
-            }
+            }, {
+                println(it.message)
+            })
     }
 
     private fun loadProfile(id: Int) {
         getSellerById(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { seller ->
+            .subscribe({ seller ->
                 this.seller.onNext(seller)
-            }
+            }, {
+                println("loadProfile")
+            })
     }
 
     fun onFavoriteClick() {

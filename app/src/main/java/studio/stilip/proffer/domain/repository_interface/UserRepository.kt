@@ -14,5 +14,7 @@ interface UserRepository {
 
     fun saveUserInDB(user: User): Completable
 
+    fun deleteUserInBD(): Completable
+
     fun getUserFromDB(): Single<User>
 }

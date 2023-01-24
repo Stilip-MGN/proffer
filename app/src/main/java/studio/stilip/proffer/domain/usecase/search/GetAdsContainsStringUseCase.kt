@@ -6,5 +6,6 @@ import javax.inject.Inject
 class GetAdsContainsStringUseCase @Inject constructor(
     private val repository: AdRepository
 ) {
-    operator fun invoke(string: String) = repository.getAdsContainsString(string)
+    operator fun invoke(string: String, userId: Int) =
+        repository.getAdsContainsString(string, userId)
 }

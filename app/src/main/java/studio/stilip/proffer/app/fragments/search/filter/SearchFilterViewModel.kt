@@ -5,6 +5,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
+import studio.stilip.proffer.data.UserCacheManager
 import studio.stilip.proffer.domain.entities.Ad
 import studio.stilip.proffer.domain.usecase.search.AddAdToFavoriteByIdUseCase
 import studio.stilip.proffer.domain.usecase.search.GetAdsContainsStringUseCase
@@ -19,6 +20,7 @@ class SearchFilterViewModel @Inject constructor(
 ) : ViewModel() {
 
     val ads = BehaviorSubject.create<List<Ad>>().apply { emptyList<Ad>() }
+    private var userId: Int = UserCacheManager.getUserId()
     private val allAds = BehaviorSubject.create<List<Ad>>().apply { emptyList<Ad>() }
     val categories = mutableListOf<String>()
     var location: String = ""
@@ -55,7 +57,7 @@ class SearchFilterViewModel @Inject constructor(
     }
 
     fun findAdsContainsString(string: String) {
-        getAdsContainsString(string)
+        getAdsContainsString(string, userId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { list ->

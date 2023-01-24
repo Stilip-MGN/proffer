@@ -21,6 +21,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentSearchBinding.bind(view)
+        hostViewModel.setBottomBarVisible(true)
 
         if (!hostViewModel.currentUser.hasValue()) {
             findNavController(view).navigate(
@@ -56,12 +57,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     }
 
-    override fun onStart() {
-        super.onStart()
-        hostViewModel.setBottomBarVisible(true)
-    }
-
-    //TODO исправить
     override fun onResume() {
         val userId = hostViewModel.currentUser.value?.id ?: -1
         if (userId != -1)

@@ -42,8 +42,13 @@ class UserRepositoryImpl @Inject constructor(
         return userDBDao.insertUser(user.toDB())
     }
 
+    override fun deleteUserInBD(): Completable {
+        return userDBDao.deleteUser()
+    }
+
+    //TODO убрать лишнее
     override fun getUserFromDB(): Single<User> {
-        return Single.just(userDBDao.getUsers().first().toDomain())
+        return userDBDao.getUsers().map { it.first().toDomain() }
     }
 
 }

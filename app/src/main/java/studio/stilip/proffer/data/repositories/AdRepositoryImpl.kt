@@ -59,9 +59,8 @@ class AdRepositoryImpl @Inject constructor(
         }.filter { ad -> ad.isFavorite })
     }
 
-    override fun getAdById(id: Int): Single<Ad> =
-        Single.just(ads.first { ad -> ad.id == id }.toDomain()
-            .also { ad -> ad.isFavorite = fav.any { favTable -> favTable.id_ad == ad.id } })
+    override fun getAdById(idAd: Int, idUser: Int): Single<Ad> =
+        retrofitService.getAdById(idUser.toString(), idAd.toString())
 
     override fun addAdToFavoriteById(id: Int): Completable {
         fav.add(AdFavoriteApi(fav.count(), 1, id))
@@ -87,11 +86,12 @@ class AdRepositoryImpl @Inject constructor(
     override fun getAdsByUserId(id: Int): Single<List<Ad>> =
         Single.just(ads.filter { ad -> ad.idSeller == id }.map { adApi -> adApi.toDomain() })
 
-    override fun getAdsContainsString(string: String): Single<List<Ad>> {
-        return Single.just(ads.map { adApi ->
-            adApi.toDomain()
-                .also { ad -> ad.isFavorite = fav.any { favTable -> favTable.id_ad == ad.id } }
-        }.filter { ad -> ad.name.contains(string, true) })
+    override fun getAdsContainsString(string: String, userId: Int): Single<List<Ad>> {
+        return retrofitService.getAdsContainsString("", string)
+//        return Single.just(ads.map { adApi ->
+//            adApi.toDomain()
+//                .also { ad -> ad.isFavorite = fav.any { favTable -> favTable.id_ad == ad.id } }
+//        }.filter { ad -> ad.name.contains(string, true) })
     }
 
     override fun getComplitedAdsByUserId(id: Int): Single<List<Ad>> =

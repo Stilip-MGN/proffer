@@ -10,7 +10,7 @@ interface AdRepository {
 
     fun getFavoritesAds(): Single<List<Ad>>
 
-    fun getAdById(id: Int): Single<Ad>
+    fun getAdById(idAd: Int, idUser: Int): Single<Ad>
 
     fun addAdToFavoriteById(id: Int): Completable
 
@@ -22,7 +22,7 @@ interface AdRepository {
 
     fun getAdsByUserId(id: Int): Single<List<Ad>>
 
-    fun getAdsContainsString(string: String): Single<List<Ad>>
+    fun getAdsContainsString(string: String, userId: Int): Single<List<Ad>>
 
     fun getComplitedAdsByUserId(id: Int): Single<List<Ad>>
 
