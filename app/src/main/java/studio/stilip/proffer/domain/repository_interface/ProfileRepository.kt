@@ -5,5 +5,7 @@ import studio.stilip.proffer.domain.entities.Profile
 
 interface ProfileRepository {
 
-    fun getProfile(): Single<Profile>
+    fun getSubscribedSellers(): Single<List<Profile>>
+
+    fun getProfileById(id: Int): Single<Profile>
 }

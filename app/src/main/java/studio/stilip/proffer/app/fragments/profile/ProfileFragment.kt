@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation.findNavController
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.HostViewModel
@@ -31,20 +32,22 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             }
         }
 
-        viewModel.profile.subscribe { profile ->
+        //TODO Заменить хардкод
+        viewModel.profile.subscribe({ profile ->
             with(binding) {
                 name.text = profile.name
-                place.hint = profile.place
-                countOrder.hint = when (profile.countOrders % 10) {
+                place.hint = "Екатеринбург"
+                val hardCountOrders = 0
+                countOrder.hint = when (hardCountOrders % 10) {
                     0 -> "${getString(R.string.no)} ${getString(R.string.active)}"
                     1 -> "1 ${getString(R.string.active_1)}"
-                    else -> "${profile.countOrders} ${getString(R.string.active)}"
+                    else -> "$hardCountOrders ${getString(R.string.active)}"
                 }
-
-                countAd.hint = when (profile.countAds % 10) {
+                val hardCountAds = 3
+                countAd.hint = when (hardCountAds % 10) {
                     0 -> "${getString(R.string.no)} ${getString(R.string.active)}"
                     1 -> "1 ${getString(R.string.active_1)}"
-                    else -> "${profile.countAds} ${getString(R.string.active)}"
+                    else -> "${hardCountAds} ${getString(R.string.active)}"
                 }
 
                 countReviews.hint = when (profile.countReviews % 10) {
@@ -54,12 +57,20 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     else -> "${profile.countReviews} ${getString(R.string.reviews)}"
                 }
 
+                Glide.with(this@ProfileFragment)
+                    .load(profile.photo)
+                    .centerCrop()
+                    .error(R.drawable.ic_person_24)
+                    .into(photo)
+
                 btnAd.setOnClickListener {
                     findNavController(view).navigate(
                         R.id.action_navigation_profile_to_ads
                     )
                 }
             }
-        }
+        }, {
+            println(it.message)
+        })
     }
 }

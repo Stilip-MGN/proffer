@@ -6,9 +6,9 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
 import studio.stilip.proffer.data.entities.AdForApi
+import studio.stilip.proffer.data.entities.ProfileForApi
 import studio.stilip.proffer.data.entities.UserApiForLogin
 import studio.stilip.proffer.data.entities.UserApiForRegister
-import studio.stilip.proffer.domain.entities.Ad
 import studio.stilip.proffer.domain.entities.User
 
 interface RetrofitServiceAd {
@@ -23,12 +23,17 @@ interface RetrofitServiceAd {
     fun getRecommendAds(@Path("id") id: String): Single<List<AdForApi>>
 
     @GET("/api/course/user={id_user}/course={id_ad}")
-    fun getAdById(@Path("id_user") id_user: String, @Path("id_ad") id_ad: String): Single<List<AdForApi>>
+    fun getAdById(
+        @Path("id_user") id_user: String,
+        @Path("id_ad") id_ad: String
+    ): Single<List<AdForApi>>
 
-    //TODO путь переделать
     @GET("/api/search/q={string}/user={id_user}")
     fun getAdsContainsString(
         @Path("id_user") id_user: String,
         @Path("string") string: String
     ): Single<List<AdForApi>>
+
+    @GET("/api/users/{id}")
+    fun getUserInfoById(@Path("id") id: String): Single<List<ProfileForApi>>
 }

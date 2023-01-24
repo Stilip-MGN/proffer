@@ -9,18 +9,18 @@ import io.reactivex.subjects.BehaviorSubject
 import studio.stilip.proffer.app.fragments.product.ProductFragment.Companion.ID_AD
 import studio.stilip.proffer.data.UserCacheManager
 import studio.stilip.proffer.domain.entities.Ad
-import studio.stilip.proffer.domain.entities.Seller
+import studio.stilip.proffer.domain.entities.Profile
 import studio.stilip.proffer.domain.usecase.product.GetSimilarAdsUseCase
 import studio.stilip.proffer.domain.usecase.search.AddAdToFavoriteByIdUseCase
 import studio.stilip.proffer.domain.usecase.search.GetAdByIdUseCase
-import studio.stilip.proffer.domain.usecase.search.GetSellerByIdUseCase
+import studio.stilip.proffer.domain.usecase.profile.GetProfileByIdUseCase
 import studio.stilip.proffer.domain.usecase.search.RemoveAdFromFavoriteByIdUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class ProductViewModel @Inject constructor(
     private val getAd: GetAdByIdUseCase,
-    private val getSellerById: GetSellerByIdUseCase,
+    private val getSellerById: GetProfileByIdUseCase,
     private val addAdToFavoriteById: AddAdToFavoriteByIdUseCase,
     private val removeAdFromFavoriteById: RemoveAdFromFavoriteByIdUseCase,
     private val getSimilarAds: GetSimilarAdsUseCase,
@@ -29,7 +29,7 @@ class ProductViewModel @Inject constructor(
     private val adId: Int = stateHandle[ID_AD]!!
     var userId: Int = UserCacheManager.getUserId()
     var ad = BehaviorSubject.create<Ad>().apply { loadAd() }
-    var seller = BehaviorSubject.create<Seller>()
+    var seller = BehaviorSubject.create<Profile>()
     val similarAds = BehaviorSubject.create<List<Ad>>()
 
     fun loadSimilar() {
@@ -39,7 +39,7 @@ class ProductViewModel @Inject constructor(
             .subscribe({ list ->
                 this.similarAds.onNext(list)
             }, {
-                println("loadSimilar")
+                println(it.message)
             })
     }
 
@@ -63,7 +63,7 @@ class ProductViewModel @Inject constructor(
             .subscribe({ seller ->
                 this.seller.onNext(seller)
             }, {
-                println("loadProfile")
+                println(it.message)
             })
     }
 
