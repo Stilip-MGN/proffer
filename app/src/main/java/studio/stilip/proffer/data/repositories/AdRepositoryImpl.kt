@@ -20,22 +20,28 @@ class AdRepositoryImpl @Inject constructor(
     //хардкод
     val ads = mutableListOf(
         AdEntityForApi( 1, listOf(
-            "https://picsum.photos/300",
+            "https://avatars.mds.yandex.net/get-mpic/6382710/img_id2579560941772562243.png/orig",
             "https://picsum.photos/301",
             "https://picsum.photos/302",
             "https://picsum.photos/303",
-        ), "Кружка", 100.0,"88007000628","Большая и с картинкой", "Металлическая", true,"Екатеринбург, Толмачева 9", listOf(),3),
+        ), "Вал карданный ВАЗ-21214", 6000.0,"88007000628","Большая и с картинкой", "Металлическая", true,"Екатеринбург, Толмачева 9", listOf(),3),
         AdEntityForApi(2, listOf(
-            "https://picsum.photos/420",
+            "https://tehnoteca.ru/img/2190/2189978/goodyear_vector_4seasons_gen_3_235_60_r18_103t_6.jpg",
             "https://picsum.photos/421",
         ), "Шины", 30000.0, "88007000628","Зимние", "Нагрузка до 100 кг", true,"Екатеринбург, Толмачева 9", listOf("Шины, диски и колёса","Для автомобиля"),1),
         AdEntityForApi(3, listOf(
-            "https://picsum.photos/520",
+            "https://www.bmw-kraft.ru/photos/engineparameters/377/1-N55B30.jpg",
             "https://picsum.photos/521",
-        ), "Мотор", 90000.0,"88007000628", "Бензиновый мотор четвертого поколения", "15 л.с.",true, "Екатеринбург, Толмачева 9", listOf("Запчасти","Для автомобиля"),2),
-        AdEntityForApi(4, emptyList(), "Облако", 3400.0, "88007000628","Белое и воздушное", "100 х 200",false, "Екатеринбург, Толмачева 9",listOf(), 1),
-        AdEntityForApi(5, emptyList(), "Укроп", 1100.0,"88007000628", "Свежий и душистый", "10 кг.",true, "Екатеринбург, Толмачева 9",listOf(), 3),
-        AdEntityForApi(6, emptyList(), "Тарелка", 190.0,"88007000628", "Использованная и одноразовая", "Пластик", true,"Екатеринбург, Толмачева 9", listOf(),2),
+        ), "Мотор BMW", 90000.0,"88007000628", "Бензиновый мотор четвертого поколения", "15 л.с.",true, "Екатеринбург, Толмачева 9", listOf("Запчасти","Для автомобиля"),2),
+        AdEntityForApi(4, listOf(
+            "https://tehnoteca.ru/img/1402/1401060/goodyear_ultra_grip_ice_plus_195_55_r15_85t_2.jpg"
+        ), "Шины Goodyear", 9900.0, "88007000628","Белое и воздушное", "100 х 200",false, "Екатеринбург, Толмачева 9",listOf(), 1),
+        AdEntityForApi(5, listOf(
+            "https://wesem-light.ru/wa-data/public/shop/img/1626115829908.jpg"
+        ), "АКПП", 12000.0,"88007000628", "Свежий и душистый", "10 кг.",true, "Екатеринбург, Толмачева 9",listOf(), 3),
+        AdEntityForApi(6, listOf(
+            "https://www.vse-shini.ru/bigimg/306336.jpg"
+        ), "Шина Kumho", 11000.0,"88007000628", "Использованная и одноразовая", "Пластик", true,"Екатеринбург, Толмачева 9", listOf(),2),
     )
 
     val complAds = mutableListOf(
