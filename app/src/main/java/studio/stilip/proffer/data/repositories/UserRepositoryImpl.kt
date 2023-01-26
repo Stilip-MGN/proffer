@@ -3,7 +3,7 @@ package studio.stilip.proffer.data.repositories
 import io.reactivex.Completable
 import io.reactivex.Single
 import studio.stilip.proffer.app.ResourcesProvider
-import studio.stilip.proffer.data.api.RetrofitServiceAd
+import studio.stilip.proffer.data.api.RetrofitServiceUser
 import studio.stilip.proffer.data.dao.UserDBDao
 import studio.stilip.proffer.data.dto.toDB
 import studio.stilip.proffer.data.dto.toDomain
@@ -17,17 +17,18 @@ import javax.inject.Singleton
 @Singleton
 class UserRepositoryImpl @Inject constructor(
     private val resourcesProvider: ResourcesProvider,
-    private val retrofitService: RetrofitServiceAd,
+    private val retrofitService: RetrofitServiceUser,
     private val userDBDao: UserDBDao
 ) : UserRepository {
 
     val users = mutableListOf(User(1, "admin", "Иван Иванович", "", "", "", "admin"))
 
     override fun authentication(login: String, password: String): Single<User> =
-        retrofitService.getLogin(UserApiForLogin(login, password))
+        retrofitService.getLogin(UserApiForLogin(login, password)).map { it.toDomain() }
 
     override fun registerUser(login: String, password: String, email: String): Single<User> =
         retrofitService.registerUser(UserApiForRegister(login, password, email))
+            .map { it.toDomain() }
 
 
     override fun changeDataUser(user: User): Completable {

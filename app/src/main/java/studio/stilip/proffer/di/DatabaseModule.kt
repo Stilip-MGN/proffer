@@ -10,6 +10,7 @@ import dagger.hilt.components.SingletonComponent
 import studio.stilip.proffer.BuildConfig
 import studio.stilip.proffer.data.api.RetrofitProvider
 import studio.stilip.proffer.data.api.RetrofitServiceAd
+import studio.stilip.proffer.data.api.RetrofitServiceUser
 import studio.stilip.proffer.data.dao.UserDBDao
 import studio.stilip.proffer.data.database.UserDatabase
 import javax.inject.Singleton
@@ -21,6 +22,10 @@ class DatabaseModule {
     @Provides
     fun provideRetrofitServiceAd(retrofitProvider: RetrofitProvider): RetrofitServiceAd =
         retrofitProvider.retrofitServiceAd
+
+    @Provides
+    fun provideRetrofitServiceUser(retrofitProvider: RetrofitProvider): RetrofitServiceUser =
+        retrofitProvider.retrofitServiceUser
 
     @Singleton
     @Provides
@@ -34,6 +39,6 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideUserDBDao(db: UserDatabase):UserDBDao = db.userDBDao()
+    fun provideUserDBDao(db: UserDatabase): UserDBDao = db.userDBDao()
 
 }

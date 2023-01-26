@@ -24,4 +24,14 @@ class RetrofitProvider @Inject constructor() {
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
         .create(RetrofitServiceAd::class.java)
+
+    val retrofitServiceUser: RetrofitServiceUser = Retrofit.Builder()
+        .baseUrl(BuildConfig.API_BASE_URL)
+        .client(httpClient)
+        .addConverterFactory(Json {
+            ignoreUnknownKeys = true
+        }.asConverterFactory("application/json".toMediaType()))
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .build()
+        .create(RetrofitServiceUser::class.java)
 }

@@ -1,14 +1,14 @@
 package studio.stilip.proffer.data.repositories
 
 import io.reactivex.Single
-import studio.stilip.proffer.data.api.RetrofitServiceAd
+import studio.stilip.proffer.data.api.RetrofitServiceUser
 import studio.stilip.proffer.data.dto.toDomain
 import studio.stilip.proffer.domain.entities.Profile
 import studio.stilip.proffer.domain.repository_interface.ProfileRepository
 import javax.inject.Inject
 
 class ProfileRepositoryImpl @Inject constructor(
-    private val retrofitService: RetrofitServiceAd,
+    private val retrofitService: RetrofitServiceUser,
 ) : ProfileRepository {
 
     val sellers = listOf(
