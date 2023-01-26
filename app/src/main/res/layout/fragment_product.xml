@@ -20,28 +20,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/btn_back"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 android:clickable="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:padding="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                 app:srcCompat="@drawable/ic_arrow_back_24" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/btn_favorite"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 android:clickable="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:padding="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                 app:srcCompat="@drawable/ic_favorite_empty_24" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -53,24 +57,28 @@
             android:background="@color/white"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/btn_image_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="@id/img_sw"
             app:layout_constraintStart_toStartOf="@id/img_sw"
             app:layout_constraintTop_toTopOf="@id/img_sw"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
             app:srcCompat="@drawable/ic_arrow_back_without_center_24" />
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/btn_image_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="@id/img_sw"
             app:layout_constraintEnd_toEndOf="@id/img_sw"
             app:layout_constraintTop_toTopOf="@id/img_sw"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
             app:srcCompat="@drawable/ic_arrow_forward_without_center_24" />
 
         <TextView
@@ -102,7 +110,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
-            android:backgroundTint="@color/icon"
             android:text="@string/buy_with_delivery"
             android:textAllCaps="false"
             android:textAppearance="?textAppearanceHeadline6"

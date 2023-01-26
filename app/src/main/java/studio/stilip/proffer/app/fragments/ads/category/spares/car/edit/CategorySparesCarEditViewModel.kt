@@ -4,10 +4,11 @@ import android.net.Uri
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
-import io.reactivex.rxjava3.subjects.BehaviorSubject
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import io.reactivex.subjects.BehaviorSubject
 import studio.stilip.proffer.app.fragments.ads.active.AdsActiveFragment.Companion.ID_AD
+import studio.stilip.proffer.data.UserCacheManager
 import studio.stilip.proffer.domain.entities.Ad
 import studio.stilip.proffer.domain.usecase.ad.DeleteAdByIdUseCase
 import studio.stilip.proffer.domain.usecase.ad.SaveEditAdUseCase
@@ -22,8 +23,8 @@ class CategorySparesCarEditViewModel @Inject constructor(
     stateHandle: SavedStateHandle
 ) : ViewModel() {
     private val adId: Int = stateHandle[ID_AD]!!
+    var userId: Int = UserCacheManager.getUserId()
     val editAd = BehaviorSubject.create<Ad>().apply {
-        println(adId)
         loadAd()
     }
     val imagesUri = BehaviorSubject.create<List<Uri>>()
@@ -31,7 +32,7 @@ class CategorySparesCarEditViewModel @Inject constructor(
     val successDeleteAd = BehaviorSubject.create<Boolean>()
 
     private fun loadAd() {
-        getAd(adId)
+        getAd(adId, userId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { ad ->
@@ -40,7 +41,7 @@ class CategorySparesCarEditViewModel @Inject constructor(
     }
 
     fun deleteImage(uri: Uri) {
-        imagesUri.onNext(imagesUri.value?.minus(uri))
+        imagesUri.onNext(imagesUri.value!!.minus(uri))
     }
 
     fun addImages(list: List<Uri>) {
@@ -61,7 +62,7 @@ class CategorySparesCarEditViewModel @Inject constructor(
             })
     }
 
-    fun deleteAd(){
+    fun deleteAd() {
         deleteAdById(adId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetAdByIdUseCase @Inject constructor(
     private val repository: AdRepository
 ) {
-    operator fun invoke(id: Int) = repository.getAdById(id)
+    operator fun invoke(idAd: Int, idUser: Int) = repository.getAdById(idAd, idUser)
 }

@@ -1,16 +1,16 @@
 package studio.stilip.proffer.domain.repository_interface
 
-import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.Completable
+import io.reactivex.Single
 import studio.stilip.proffer.domain.entities.Ad
 
 interface AdRepository {
 
-    fun getRecommendedAds(): Single<List<Ad>>
+    fun getRecommendedAds(userId: Int): Single<List<Ad>>
 
     fun getFavoritesAds(): Single<List<Ad>>
 
-    fun getAdById(id: Int): Single<Ad>
+    fun getAdById(idAd: Int, idUser: Int): Single<Ad>
 
     fun addAdToFavoriteById(id: Int): Completable
 
@@ -22,7 +22,7 @@ interface AdRepository {
 
     fun getAdsByUserId(id: Int): Single<List<Ad>>
 
-    fun getAdsContainsString(string: String): Single<List<Ad>>
+    fun getAdsContainsString(string: String, userId: Int): Single<List<Ad>>
 
     fun getComplitedAdsByUserId(id: Int): Single<List<Ad>>
 

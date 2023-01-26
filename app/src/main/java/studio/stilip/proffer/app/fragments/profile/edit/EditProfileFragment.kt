@@ -6,12 +6,14 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation.findNavController
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.disposables.Disposable
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.HostViewModel
+import studio.stilip.proffer.app.fragments.profile.ProfileViewModel
 import studio.stilip.proffer.databinding.FragmentEditProfileBinding
 import studio.stilip.proffer.domain.entities.User
 
@@ -19,6 +21,7 @@ import studio.stilip.proffer.domain.entities.User
 class EditProfileFragment : Fragment(R.layout.fragment_edit_profile) {
 
     private val hostViewModel: HostViewModel by activityViewModels()
+    private val viewModel: ProfileViewModel by viewModels()
     private lateinit var binding: FragmentEditProfileBinding
     private lateinit var dataChangedDisposable: Disposable
 
@@ -35,12 +38,22 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile) {
 
         with(binding) {
 
-            val user = hostViewModel.currentUser.value!!
-            editUserName.setText(user.name)
-            editUserCity.setText(user.city)
-            editUserPhone.setText(user.phone)
-            editUserMail.setText(user.mail)
-            editUserPassword.setText(user.password)
+            //TODO убрать хардкод
+            viewModel.profile.subscribe({ user ->
+                editUserName.setText(user.name)
+                editUserCity.setText("Екатеринбург")
+                editUserPhone.setText("895362838362")
+                editUserMail.setText(user.mail)
+                editUserPassword.setText("12345678Abc")
+
+                Glide.with(this@EditProfileFragment)
+                    .load(user.photo)
+                    .centerCrop()
+                    .error(R.drawable.ic_person_24)
+                    .into(photo)
+            }, {
+                println(it.message)
+            })
 
             btnBack.setOnClickListener {
                 requireActivity().onBackPressed()
@@ -64,14 +77,19 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile) {
             }
 
             btnSave.setOnClickListener {
+                val user = hostViewModel.currentUser.value!!
                 val id = user.id
-                val login = hostViewModel.currentUser.value!!.login
+                val login = user.login
                 val name = editUserName.text.toString()
                 val city = editUserCity.text.toString()
                 val phone = editUserPhone.text.toString()
                 val mail = editUserMail.text.toString()
                 val password = editUserPassword.text.toString()
                 hostViewModel.changeData(User(id, login, name, city, phone, mail, password))
+            }
+
+            btnExit.setOnClickListener {
+                hostViewModel.deleteCurrentUser()
             }
         }
     }

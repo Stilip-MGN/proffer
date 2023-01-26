@@ -2,13 +2,12 @@ package studio.stilip.proffer.app.fragments.authorization.sign
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
-import io.reactivex.rxjava3.subjects.PublishSubject
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import io.reactivex.subjects.PublishSubject
 import studio.stilip.proffer.R
 import studio.stilip.proffer.app.ResourcesProvider
 import studio.stilip.proffer.domain.entities.User
-import studio.stilip.proffer.domain.usecase.authorization.RegistrationUserUseCase
 import studio.stilip.proffer.domain.usecase.authorization.SignInUserUseCase
 import javax.inject.Inject
 
@@ -29,7 +28,7 @@ class SignInViewModel @Inject constructor(
                 user.onNext(u)
                 message.onNext(resourcesProvider.getString(R.string.you_sign_in))
             }, {
-                message.onNext(it.message)
+                message.onNext(resourcesProvider.getString(R.string.invalid_login_or_password))
             })
     }
 

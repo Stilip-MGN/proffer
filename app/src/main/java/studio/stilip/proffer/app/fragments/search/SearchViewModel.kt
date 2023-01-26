@@ -2,9 +2,9 @@ package studio.stilip.proffer.app.fragments.search
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
-import io.reactivex.rxjava3.subjects.BehaviorSubject
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import io.reactivex.subjects.BehaviorSubject
 import studio.stilip.proffer.domain.entities.Ad
 import studio.stilip.proffer.domain.usecase.search.AddAdToFavoriteByIdUseCase
 import studio.stilip.proffer.domain.usecase.search.GetRecommendedAdsUseCase
@@ -18,15 +18,15 @@ class SearchViewModel @Inject constructor(
     private val removeAdFromFavoriteById: RemoveAdFromFavoriteByIdUseCase,
 ) : ViewModel() {
 
-    val ads = BehaviorSubject.create<List<Ad>>().apply { getRecommended() }
+    val ads = BehaviorSubject.create<List<Ad>>()
 
-    fun getRecommended() {
-        getRecommendedAds()
+    fun getRecommended(userId: Int) {
+        getRecommendedAds(userId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { list ->
+            .subscribe({ list ->
                 ads.onNext(list)
-            }
+            }, {})
     }
 
     fun changeFavoriteStatusById(id_product: Int) {

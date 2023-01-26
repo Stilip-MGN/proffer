@@ -50,35 +50,14 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edit_user_name_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_login">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_user_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:autofillHints="name"
-                    android:background="@drawable/tools_shape"
-                    android:hint="@string/first_name_last_name"
-                    android:inputType="textPersonName"
-                    android:lines="1" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/edit_user_login_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:background="@drawable/tools_shape"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edit_user_name_layout">
+                app:layout_constraintTop_toBottomOf="@id/text_login">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_user_login"
@@ -93,14 +72,38 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edit_user_mail_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/tools_shape"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edit_user_login_layout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_user_mail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="name"
+                    android:background="@drawable/tools_shape"
+                    android:hint="@string/e_mail"
+                    android:inputType="textPersonName"
+                    android:lines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/edit_user_password_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/tools_shape"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edit_user_login_layout">
+                app:layout_constraintTop_toBottomOf="@id/edit_user_mail_layout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_user_password"
@@ -109,7 +112,7 @@
                     android:autofillHints="emailAddress"
                     android:background="@drawable/tools_shape"
                     android:hint="@string/password"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPassword"
                     android:lines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
